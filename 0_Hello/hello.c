@@ -21,6 +21,7 @@
 #include <stdio.h>
 
 int main(){
+    /* My First C Program*/
     char hello[] = "Hello world! 你好";
     printf(hello);
     return 0;
