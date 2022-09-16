@@ -1,4 +1,4 @@
-# Basic Structure
+# 0 Basic Structure
 
 ```c
 #include <stdio.h>
@@ -17,4 +17,6 @@ Secondly, the line `int` and its body wrapped by `{}` means a function. The `int
 
 Thirdly, in the end of the function, we must return something matching the function type we define in the beginning. In addition, if a function executes to a line with something returned, the function will be ended, that is to say, what you write after the 'return' line will never be useless.
 
-Finally, the line wrapped by `/*` in the beginning and `*/` in the end is called comment, which will not be contained in our program, and we can use it to help our code more readable.
+Forthly, we divide orders in a function  with `;`.
+
+Finally, the line wrapped by `/*` in the beginning and `*/` in the end is called comment, which will not be contained in our program, and we can use it to help our code more readable. In addition we can use `//` in the beginning to comment a single line.  
