@@ -1,5 +1,9 @@
 # 1 Grammar
 
+- [ ] data type enum, list, pointer...
+- [ ] storage type
+- [ ] constant
+
 ## 1.1 Variable
 
 We can define variable to store different data structure. In Clanguage, we can use letter `a-z`, `A-Z`, symbol `_` in the beginning and none or several letters, `_` or numbers following to define a variable. The legal variables and illegal variables are listing underneath.
@@ -263,7 +267,7 @@ int main()
 }
 ```
 
-Notice that in C language, any variable whose value is not **0** will be regarded as `true` in logical operation.
+Notice that in C language, any variable whose value is not **0** or `null` will be regarded as `true` in logical operation.
 
 ### 1.2.4 Bitwise Operators
 
@@ -302,7 +306,7 @@ In the table underneath, the smaller the row is, the higher the priority is. And
 
 | Class | Operators | Combination |
 | --- | --- | --- |
-| Suffix | `()`, `[]`, `->`, `.`, `++`, `--` | from left to right |
+| suffix | `()`, `[]`, `->`, `.`, `++`, `--` | from left to right |
 | unary | `+`, `-`, `!`, `~`, `++`, `--`, `(type)*`, `&`, `sizeof` | from right to left |
 | multiplication and division(binary) | `*`, `/`, `%` | from left to right |
 | add and subtract(binary) | `+`, `-`  | from left to right |
@@ -353,3 +357,224 @@ The value of "((a + b) * c) / d" is 90
 The value of "(a + b) * (c / d)" is 90
 The value of "a + (b * c) / d" is 50
 ```
+
+## 1.3 Data Type
+
+Every variable has its type, and the type decide the space the variable will use in internal storage and its valua range. In the beiginning we only introduce the integer, float, and the void type.
+
+It should be known to us that 1 byte is equivalant to 8 bits.
+
+$$
+1\ byte = 8\ bits
+$$
+
+### 1.3.1 Integer
+
+| type | space | range |
+| --- | --- | --- |
+| `char` | 1 byte | -128~127 or 0~255 |
+| `unsigned char` | 1 byte | 0~255 |
+| `signed char` | 1 byte | -128~127 |
+| `int` | 2 or 4 bytes | -32,768~32,767 or -2,147,483,648~2,147,483,647 |
+| `unsigned int` | 2 or 4 bytes | 0~65,535 or 0~4,294,967,295 |
+| `short` | 2 bytes | -32,768~32,767 |
+| `unsigned short` | 2 bytes | 0~65,535 |
+| `long` | 4 bytes | -2,147,483,648~2,147,483,647 |
+| `unsigned long` | 4 bytes | 0~4,294,967,295 |
+
+### 1.3.2 Float
+
+| type | space | range | Precision(significant bit) |
+| --- | --- | --- | --- |
+| `float` | 4 bytes | 1.2E-38~3.4E+38 | 6 |
+| `double` | 8 bytes | 2.3E-308~1.7E+308 | 15 |
+| `long double` | 16 bytes | 3.4E-4932~1.1E+4932 | 19 |
+
+### 1.3.3 Void
+
+If a object has no value, it is the void type. In function, if no value will be returned, we should set it void type.
+
+## 1.4 Conditional Statement
+
+Conditional statement will be only executed when the conditions are true. 
+
+### 1.4.1 if...else
+
+The structure of `if...else...` is like underneath: 
+
+```c
+if(boolean_expression)
+{
+   /* statement */
+}
+else
+{
+   /* statement */
+}
+```
+
+For instance
+
+```c
+#include <stdio.h>
+ 
+int main ()
+{
+   /* definition */
+   int a = 10;
+ 
+   /* check the bool value */
+   if( a < 20 )
+   {
+       /* if the value is true, this statement will be executed */
+       printf("a is smaller than 20\n" );
+   }
+   else
+   {
+      /* if the value is false, this statement will be executed */
+      printf("a is not smaller than 20\n" );
+   }
+   printf("The value of a is %d\n", a);
+ 
+   return 0;
+}
+```
+
+The `else` statement is not essential, in other words, if there is no `else` statement nothing will be done if the condition is `false`.
+
+If the condition is very complex, we can use `else if` statement.
+
+```c
+#include <stdio.h>
+ 
+int main ()
+{
+   /* definition */
+   int a = 100;
+ 
+   /* check */
+   if( a == 10 )
+   {
+       printf("The valua of a is 10\n" );
+   }
+   else if( a == 20 )
+   {
+       printf("The valua of a is 20\n" );
+   }
+   else if( a == 30 )
+   {
+       printf("The valua of a is 30\n" );
+   }
+   else
+   {
+       printf("No match value for a \n" );
+   }
+   printf("The valua of a is %d\n", a );
+ 
+   return 0;
+}
+```
+
+Notice that, as long as one of the conditions is `true`, the whole conditional statements will be over after executing the conditional statement, although there are conditions are also true after the first condition.
+
+Also, the `if` statement can nested by other `if` statement. For instance
+
+```c
+#include <stdio.h>
+ 
+int main ()
+{
+   /* definition */
+   int a = 100;
+   int b = 200;
+ 
+   /* check */
+   if( a == 100 )
+   {
+       if( b == 200 )
+       {
+          printf("The value of a is 100, and the value of b is 200\n" );
+       }
+   }
+   printf("The value of a is %d\n", a );
+   printf("The value of a is %d\n", b );
+ 
+   return 0;
+}
+```
+
+### 1.4.2 ?: Operator
+
+We have known the ternary operators `?:`. It is actually is a conditional statement. It is used like this
+
+```c
+Exp1 ? Exp2 : Exp3;
+```
+
+The `Exp1` is a bool expression, if it is `true`, then return the value of `Exp2`, otherwise `Exp3`. For instance
+
+```c
+#include<stdio.h>
+ 
+int main()
+{
+    int num;
+ 
+    printf("Please enter a number: ");
+    scanf("%d",&num);
+ 
+    (num%2==0)?printf("The nnumber is even"):printf("The number is odd");
+}
+```
+
+### 1.4.3 switch...case
+
+The `switch` statement is like this
+
+```c
+switch(expression){
+    case constant-expression1  :
+       statement(s);
+       break; /* optional */
+    case constant-expression2  :
+       statement(s);
+       break; /* optional */
+      /* any number of cases */
+    default : /* optional */
+       statement(s);
+}
+```
+
+If the value of `expression` is equal to one of the `case`'s `constant-expression`, the statement under that `case` will be executed. If none of the `constant-expression` match the value, the statement under `default` will be executed. Like the `else`, `default` is also not essential. For instance
+
+```c
+int main ()
+{
+   /* difinition */
+   char grade = 'B';
+ 
+   switch(grade)
+   {
+   case 'A' :
+      printf("Great!\n" );
+      break;
+   case 'B' :
+   case 'C' :
+      printf("Well done!\n" );
+      break;
+   case 'D' :
+      printf("You have passed.\n" );
+      break;
+   case 'F' :
+      printf("Try again.\n" );
+      break;
+   default :
+      printf("invalid grade.\n" );
+   }
+   printf("Your grade is %c\n", grade );
+ 
+   return 0;
+}
+```
+
+## 1.5 Loop
