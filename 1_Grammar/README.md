@@ -421,11 +421,11 @@ If a object has no value, it is the void type. In function, if no value will be 
 
 ## 1.4 Conditional Statement
 
-Conditional statement will be only executed when the conditions are true. 
+Conditional statement will be only executed when the conditions are true.
 
 ### 1.4.1 if...else
 
-The structure of `if...else...` is like underneath: 
+The structure of `if...else...` is like underneath:
 
 ```c
 if(boolean_expression)
@@ -736,21 +736,23 @@ The `break` is also used in the `switch` statement to end the whole conditional 
 int main(){
    int i = 10;
    switch(i){
-      case 10: i+=10;
-      case 20: i+=10;
-      default: i+=10;
+      case 10: i += 10;
+      case 20: i += 10;
+      default: i += 10;
    }
-   printf("In the first loop without \"break\", finally, i=%d/n");
+   printf("In the first loop without \"break\", finally, i=%d\n",i);
 
    i = 10;
    switch(i){
       case 10: 
-         i+=10;
-         break;
-      case 20: i+=10;
-      default: i+=10;
+        i += 10;
+        break;
+      case 20: i += 10;
+      default: i += 10;
    }
-   printf("In the second loop with \"break\", finally, i=%d/n");
+   printf("In the second loop with \"break\", finally, i=%d\n",i);
+
+   return 0;
 }
 ```
 
