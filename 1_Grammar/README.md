@@ -3,6 +3,31 @@
 - [ ] data type enum, list, pointer...
 - [ ] storage type
 - [ ] constant
+- [ ] data type example
+
+- [1 Grammar](#1-grammar)
+  - [1.1 Variable](#11-variable)
+  - [1.2 Operator](#12-operator)
+    - [1.2.1 Arithmetic Operators](#121-arithmetic-operators)
+    - [1.2.2 Relational Operators](#122-relational-operators)
+    - [1.2.3 Logical Operators](#123-logical-operators)
+    - [1.2.4 Bitwise Operators](#124-bitwise-operators)
+    - [1.2.5 Assignment Operators](#125-assignment-operators)
+    - [1.2.6 Other Operators](#126-other-operators)
+    - [1.2.6 Priority](#126-priority)
+  - [1.3 Data Type](#13-data-type)
+    - [1.3.1 Integer](#131-integer)
+    - [1.3.2 Float](#132-float)
+    - [1.3.3 Void](#133-void)
+  - [1.4 Conditional Statement](#14-conditional-statement)
+    - [1.4.1 if...else](#141-ifelse)
+    - [1.4.2 ?: Operator](#142--operator)
+    - [1.4.3 switch...case](#143-switchcase)
+  - [1.5 Loop](#15-loop)
+    - [1.5.1 while...loop](#151-whileloop)
+    - [1.5.2 for..loop](#152-forloop)
+    - [1.5.3 do..while...loop](#153-dowhileloop)
+    - [1.5.4 control statement](#154-control-statement)
 
 ## 1.1 Variable
 
@@ -578,3 +603,186 @@ int main ()
 ```
 
 ## 1.5 Loop
+
+Sometimes, we need execute some statements several times. For these statement, loop statement can make us easier.
+
+### 1.5.1 while...loop
+
+One kind of loop is `while` loop. It is used like this
+
+```c
+while(condition)
+{
+   statement(s);
+}
+```
+
+If the value of `condition` is `true`, the statement under `while` will be executed until the `condition` change to `false`. For instanse
+
+```c
+#include <stdio.h>
+ 
+int main ()
+{
+   /* definition */
+   int a = 10;
+
+   /* while loop */
+   while( a < 20 )
+   {
+      printf("The value of a is %d\n", a);
+      a++;
+   }
+ 
+   return 0;
+}
+```
+
+### 1.5.2 for..loop
+
+Another kind of loop is `for` loop. This kind of loop is ofen used to those loop we need set loop times for. It is used like this
+
+```c
+for ( init; condition; increment )
+{
+   statement(s);
+}
+```
+
+The `init` is to initialize an internal variable and will only be executed at the first time, and then if the variable meet the `condition`, the statement will be executed. After the statement's execution, the variable will change as the `increment` tells. For instance
+
+```c
+#include <stdio.h>
+ 
+int main ()
+{
+   /* for loop */
+   for( int a = 10; a < 20; a = a + 1 )
+   {
+      printf("The value of a is %d\n", a);
+   }
+ 
+   return 0;
+}
+```
+
+### 1.5.3 do..while...loop
+
+Similar to `while` loop, the `do...while` loop is used like this
+
+```c
+do
+{
+   statement(s);
+
+}while( condition );
+```
+
+But there is difference between `while` and `do...while` which is that `while` check the condition in the beginning, whereas the `do..while` check the condition at the end which makes the `do...while` loop always executes at least once. For instance
+
+```c
+#include <stdio.h>
+ 
+int main ()
+{
+   /* definition */
+   int a = 10;
+
+   /* do...while loop */
+   do
+   {
+       printf("a 的值： %d\n", a);
+       a = a + 1;
+   }while( a < 20 );
+ 
+   return 0;
+}
+```
+
+### 1.5.4 control statement
+
+There is two common control statement in loop, `break` and `continue`.
+
+Control `break` will end the whole loop, and the program will goto statement after this loop. For instance
+
+```c
+#include <stdio.h>
+ 
+int main ()
+{
+   /* definition */
+   int a = 10;
+
+   while( a < 20 )
+   {
+      printf("a 的值： %d\n", a);
+      a++;
+      if( a > 15)
+      {
+         /* end the loop */
+          break;
+      }
+   }
+ 
+   return 0;
+}
+```
+
+The `break` is also used in the `switch` statement to end the whole conditional statement. Without `break`, the statement will continue checking from the first case to the last case which makes the program may execute several cases in one time. For instance
+
+```c
+#include <stdio.h>
+
+int main(){
+   int i = 10;
+   switch(i){
+      case 10: i+=10;
+      case 20: i+=10;
+      default: i+=10;
+   }
+   printf("In the first loop without \"break\", finally, i=%d/n");
+
+   i = 10;
+   switch(i){
+      case 10: 
+         i+=10;
+         break;
+      case 20: i+=10;
+      default: i+=10;
+   }
+   printf("In the second loop with \"break\", finally, i=%d/n");
+}
+```
+
+We will get the result after we compiling the program
+
+```c
+In the first loop without "break", finally, i=40
+In the second loop with "break", finally, i=20
+```
+
+Control `continue` will end this time of loop, and goto the next time immediately. For instance
+
+```c
+#include <stdio.h>
+ 
+int main ()
+{
+   int a = 10;
+
+   do
+   {
+      if( a == 15)
+      {
+         /* pass this time of loop */
+         a = a + 1;
+         continue;
+      }
+      printf("The value of a is %d\n", a);
+      a++;
+     
+   }while( a < 20 );
+ 
+   return 0;
+}
+```
