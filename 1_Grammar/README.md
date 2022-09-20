@@ -28,6 +28,20 @@
     - [1.5.2 for..loop](#152-forloop)
     - [1.5.3 do..while...loop](#153-dowhileloop)
     - [1.5.4 control statement](#154-control-statement)
+  - [1.6 Function](#16-function)
+    - [1.6.1 Definition](#161-definition)
+    - [1.6.2 Declaration](#162-declaration)
+    - [1.6.3 Calling](#163-calling)
+    - [1.6.4 Recursion](#164-recursion)
+  - [1.7 Scope](#17-scope)
+    - [1.7.1 Local Variable](#171-local-variable)
+    - [1.7.2 Global Variable](#172-global-variable)
+    - [1.7.3 Formal Parameter](#173-formal-parameter)
+  - [1.8 Storage Class](#18-storage-class)
+    - [1.8.1 auto](#181-auto)
+    - [1.8.2 register](#182-register)
+    - [1.8.3 static](#183-static)
+    - [1.8.4 external](#184-external)
 
 ## 1.1 Variable
 
@@ -397,15 +411,15 @@ $$
 
 | type | space | range |
 | --- | --- | --- |
-| `char` | 1 byte | -128~127 or 0~255 |
-| `unsigned char` | 1 byte | 0~255 |
+| `char` | 1 byte | -128\~127 or 0\~255 |
+| `unsigned char` | 1 byte | 0\~255 |
 | `signed char` | 1 byte | -128~127 |
-| `int` | 2 or 4 bytes | -32,768~32,767 or -2,147,483,648~2,147,483,647 |
-| `unsigned int` | 2 or 4 bytes | 0~65,535 or 0~4,294,967,295 |
-| `short` | 2 bytes | -32,768~32,767 |
-| `unsigned short` | 2 bytes | 0~65,535 |
-| `long` | 4 bytes | -2,147,483,648~2,147,483,647 |
-| `unsigned long` | 4 bytes | 0~4,294,967,295 |
+| `int` | 2 or 4 bytes | -32,768\~32,767 or -2,147,483,648\~2,147,483,647 |
+| `unsigned int` | 2 or 4 bytes | 0\~65,535 or 0~4,294,967,295 |
+| `short` | 2 bytes | -32,768\~32,767 |
+| `unsigned short` | 2 bytes | 0\~65,535 |
+| `long` | 4 bytes | -2,147,483,648\~2,147,483,647 |
+| `unsigned long` | 4 bytes | 0\~4,294,967,295 |
 
 ### 1.3.2 Float
 
@@ -414,6 +428,8 @@ $$
 | `float` | 4 bytes | 1.2E-38~3.4E+38 | 6 |
 | `double` | 8 bytes | 2.3E-308~1.7E+308 | 15 |
 | `long double` | 16 bytes | 3.4E-4932~1.1E+4932 | 19 |
+
+![Difference between system](https://www.runoob.com/wp-content/uploads/2014/09/32-64.jpg)TODO:
 
 ### 1.3.3 Void
 
@@ -787,4 +803,316 @@ int main ()
  
    return 0;
 }
+```
+
+## 1.6 Function
+
+Function is a group of statement doing a particular task. Every C program contains at least one function, whose name is `main`. Generaly, to use function, there are three steps, 'declaration', 'definition' and 'calling'.
+
+### 1.6.1 Definition
+
+We firstly introduce how to define a function.
+
+```c
+return_type function_name( parameter list )
+{
+   body of the function;
+   return value;
+}
+```
+
+A function is consist of head and body.
+
+In head, we firstly declare the return type of the function which is the same as he return value's type. Then we define the name of the function to call it in other place. Finally, we need give a parameter list to the function to help the function complete its task.
+
+In body we write statement to achieve what we want to do, and then return the result so that we can joint different functions to finish a complex work. For instance
+
+```c
+/* give the function two numbers, and we will get the bigger number of them */
+int max(int num1, int num2) 
+{
+   int result;
+ 
+   if (num1 > num2) {
+      result = num1;
+   } else {
+      result = num2;
+   }
+   return result; 
+}
+```
+
+### 1.6.2 Declaration
+
+We declare function like this
+
+```c
+return_type function_name(parameter list);
+```
+
+It's a good habit to declare functions what we will define in the beginning of C file. But if the function and the `main` function are defined in the same file, the declaration is not essential.
+
+In declaration, only the parameters'types are needed, whereas the parameters' names are not essential, for instance
+
+```c
+int max(int num1, int num2);
+int min(int,int);
+/* both OK */
+```
+
+### 1.6.3 Calling
+
+We can call function which we have defined before to complete a task in particular situation. For instance, we can call the `max` function defined in *1.6.1*
+
+```c
+#include <stdio.h>
+ 
+int max(int num1, int num2);
+ 
+int main ()
+{
+   int a = 100;
+   int b = 200;
+   int ret;
+ 
+   /* Calling */
+   ret = max(a, b);
+ 
+   printf( "Max value is : %d\n", ret );
+ 
+   return 0;
+}
+```
+
+### 1.6.4 Recursion
+
+We can even call a function in itself body. This operation is called recursion. A classic example is *Fibonacci Series*.
+
+$$
+F_n= \begin{cases}
+   1, & n=1 \\
+   1, & n=2 \\
+   F_{n-1}+F_{n-2}, & n\ge3
+\end{cases}
+$$
+
+```c
+#include <stdio.h>
+ 
+int fibonaci(int i)
+{
+   if(i == 0)
+   {
+      return 0;
+   }
+   if(i == 1)
+   {
+      return 1;
+   }
+   return fibonaci(i-1) + fibonaci(i-2);
+}
+ 
+int  main()
+{
+    int i;
+    for (i = 0; i < 10; i++)
+    {
+       printf("%d\t\n", fibonaci(i));
+    }
+    return 0;
+}
+```
+
+## 1.7 Scope
+
+In C language, every variable has its scope which is related to the variable's declaration place. We cannot visit the variable beyond its scope. Totally, we have three place to declare variable.
+
+- Local variable: in a function or in a block statement;
+- Global variable: out of all functions;
+- Formal parameter: the formal parameter when defining a function.
+
+### 1.7.1 Local Variable
+
+Local variables only exist in the block where it is declared. For instance
+
+```c
+if(sizeof(int)==sizeof(long))
+{
+    long sum;
+}
+else
+{
+    int sum;
+}
+```
+
+The `long sum` only exists in `if` block, whereas the `int sum` only exists in the `else` block. Out of the block, we cannot visit the variable named `sum`. There is another situation where we declare `sum` out of `if...else` and redeclare `sum` in `if...else` block, the compiler will use the declaration in the nearest, in other word, the declaration in `if...else` block as priority.
+
+### 1.7.2 Global Variable
+
+The global variable is declared out of any functions so it can be visited by any functions. For instance
+
+```c
+#include <stdio.h>
+ 
+/* global variable */
+int g;
+ 
+int main ()
+{
+  int a, b;
+
+  a = 10;
+  b = 20;
+  g = a + b;
+ 
+  printf ("value of a = %d, b = %d and g = %d\n", a, b, g);
+ 
+  return 0;
+}
+```
+
+### 1.7.3 Formal Parameter
+
+When we define a function, the parameters we give to the function is acually variables. They are declaredautomatically when we define the function and can be visited in any place in the function. Also the parameters are given the highest priority in the function if there is several variables with a same name. For instance
+
+```c
+/* global variable */
+int a = 20;
+ 
+int main ()
+{
+  /* local variable */
+  int a = 10;
+  int b = 20;
+  int c = 0;
+  int sum(int, int);
+ 
+  printf ("value of a in main() = %d\n",  a);
+  c = sum( a, b);
+  printf ("value of c in main() = %d\n",  c);
+ 
+  return 0;
+}
+ 
+/* formal parameter */
+int sum(int a, int b)
+{
+    printf ("value of a in sum() = %d\n",  a);
+    printf ("value of b in sum() = %d\n",  b);
+ 
+    return a + b;
+}
+```
+
+## 1.8 Storage Class
+
+In C language, there are four kinds of storage classes, `auto`, `register`, `static`, `extern`. We can define a variable's storage class before its data type
+
+```c
+storage_lass data_type a;
+```
+
+### 1.8.1 auto
+
+The class `auto` is defaultly used by local variable.
+
+### 1.8.2 register
+
+As its name, variable with `register` class will be storaged in register(Actually, different machine may deal with this class in different ways, even not storage it in register).
+
+Because storaged in register, this kind of variable cannot bigger than a register(generally 1 byte), but we can visit `register` class more rapidly.
+
+### 1.8.3 static
+
+There are two ways to use `static` class.
+
+One of the ways is to decorate local variable. If a local variable decorated by `static`, it will exist through the program's lifecycle. That is to say, whenever we enter or exit the block where the variable is declared, the variable will not be destoryed or initialized after the first time it is initialized.
+
+Another way is to decorate global variable, so that the global variable only can be visited in the file where it is declared.
+
+For instance
+
+```c
+#include <stdio.h>
+
+void func1(void);
+
+/* global static */
+static int count=10;
+ 
+int main()
+{
+  while (count--) {
+      func1();
+  }
+  return 0;
+}
+
+void func1(void)
+{
+/* 'thingy' only be initialized once
+ * Every time we call func1, the `thingy` will not be destoryed or initailized
+ */                
+  static int thingy=5;
+  thingy++;
+  printf("The value of thingy is %d ， count is %d\n", thingy, count);
+}
+```
+
+We will get the result after compiling this program
+
+```bash
+The value of thingy is 6 ， count is 9
+The value of thingy is 7 ， count is 8
+The value of thingy is 8 ， count is 7
+The value of thingy is 9 ， count is 6
+The value of thingy is 10 ， count is 5
+The value of thingy is 11 ， count is 4
+The value of thingy is 12 ， count is 3
+The value of thingy is 13 ， count is 2
+The value of thingy is 14 ， count is 1
+The value of thingy is 15 ， count is 0
+```
+
+### 1.8.4 external
+
+The class `external` is used to decorate a global variable. It will make the variable visitable to all files. If the variable is already defined, then the declaration will point to the pre-declaration. For instance, there are two `.c` files
+
+```c
+/* main.c */
+#include <stdio.h>
+ 
+int count ;
+extern void write_extern();
+
+int main()
+{
+   count = 5;
+   write_extern();
+}
+```
+
+```c
+/* support.c */
+#include <stdio.h>
+ 
+extern int count;
+ 
+void write_extern(void)
+{
+   printf("count is %d\n", count);
+}
+```
+
+We can compile the two files like this
+
+```bash
+gcc main.c support.c
+```
+
+Finally, we will get esult
+
+```bash
+count is 5
 ```
