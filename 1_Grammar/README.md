@@ -42,6 +42,15 @@
     - [1.8.2 register](#182-register)
     - [1.8.3 static](#183-static)
     - [1.8.4 external](#184-external)
+  - [1.9 Array](#19-array)
+    - [1.9.1 Declarati](#191-declarati)
+    - [1.9.2 Initialization](#192-initialization)
+    - [1.9.3 Visit](#193-visit)
+  - [1.10 String](#110-string)
+  - [1.11 Standard IO](#111-standard-io)
+    - [1.11.1 printf](#1111-printf)
+    - [1.12.2 scanf](#1122-scanf)
+    - [1.12.3 Placeholder](#1123-placeholder)
 
 ## 1.1 Variable
 
@@ -1116,3 +1125,210 @@ Finally, we will get esult
 ```bash
 count is 5
 ```
+
+## 1.9 Array
+
+Array is one of the data types which can be used to storage a series data with same type.
+
+### 1.9.1 Declarati
+
+To declarate a array, the array size is essential, which is equal to the number of data we plan to storage in the array. We can also call it 'length'.
+
+```c
+type arrayName [ arraySize ];
+```
+
+For instance
+
+```c
+double balance[10];
+```
+
+The `balance` is the array's name, and it can storage 10 double-type numbers.
+
+### 1.9.2 Initialization
+
+We can initialization array when we declare it.
+
+```c
+double balance[5] = {1000.0, 2.0, 3.4, 7.0, 50.0};
+double balance2[] = {1000.0, 2.0, 3.4, 7.0, 50.0};
+```
+
+In this way, the array size is not essential. If the size is ignored, the compiler will default set its size as you give size.
+
+### 1.9.3 Visit
+
+The operator `[]` is used to visit array's element. The first element in array's index is `0`, the second is `1`...
+
+```c
+balance[4] = 50.0;
+```
+
+We often use `for` loop to initialize a array with some rules. For instance
+
+```c
+double p[9]
+
+for(int i = 0; i < 9; i++){
+   p[i] = 1 / i;
+}
+```
+
+## 1.10 String
+
+String actually is a array made up by a series of characters and ended with `NULL` character `\0`.
+
+We can initialize a string like this
+
+```c
+char site[7] = {'R', 'U', 'N', 'O', 'O', 'B', '\0'};
+/* or */
+char site2[] = "RUNOOB";
+```
+
+The second way is more simple and is more widely used.
+
+In header `string.h`, there are many functions to operate strings being defined.
+
+| Function | Effect |
+| --- | --- |
+| `strcpy(s1, s2)` | copy the content of string `s2` to `s1` |
+| `strcat(s1, s2)` | joint `s2` at the end of `s1` |
+| `strlen(s1)` | return the length of `s1` |
+| `strcmp(s1, s2)` | compare `s1` with `s2`, if `s1`>`s2`, it will return a positive number; if `s1`<`s2`, it will return a negative number; else it will return `0` |
+| `strchr(s1, ch)` | return a pointer where the character `ch` first appear in `s1` |
+| `strstr(s1, s2)` | return a pointer where the string `s2` first appear in `s1` |
+
+For instance
+
+```c
+#include <stdio.h>
+#include <string.h>  /* call string.h */
+ 
+int main ()
+{
+   char str1[14] = "runoob";
+   char str2[14] = "google";
+   char str3[14];
+   int  len ;
+ 
+   /* copy str1 to str3 */
+   strcpy(str3, str1);
+   printf("strcpy( str3, str1) :  %s\n", str3 );
+ 
+   /* joint str1 with str2 */
+   strcat( str1, str2);
+   printf("strcat( str1, str2):   %s\n", str1 );
+ 
+   /* get the length of str1 */
+   len = strlen(str1);
+   printf("strlen(str1) :  %d\n", len );
+ 
+   return 0;
+}
+```
+
+## 1.11 Standard IO
+
+We have used `printf` function many times. In C language, we can use `printf` function to put out in console, `scanf` function to put in, both the two functions are defined in the `stdio.h`.
+
+### 1.11.1 printf
+
+The standard function `printf` is defined like this
+
+```c
+int printf(const char *format, ...)
+```
+
+The `format` can be a simple string, whereas it also can be a string with several placeholders. If a string has placeholder, then the placehoder will be placed by the parameter following `format` and the parameters and placeholders have a corresponding relationship. So the **numbers, types and orders** of placeholders and parameters following `format` are must the same. For instance
+
+```c
+#include <stdio.h>
+
+int main(){
+   char boy[] = "Bob";
+   char girl[] = "Rose";
+
+   printf("%s loves %s.", boy, girl);
+
+   return 0;turn 0;
+}
+```
+
+This program will get
+
+```bash
+Bob loves Rose.
+```
+
+### 1.12.2 scanf
+
+The `scanf`'s style is much similar to `printf`.
+
+```c
+int scanf(const char *format, ...)
+```
+
+For instance
+
+```c
+char str[100];
+int i;
+
+scanf("%s %d", str, &i);
+```
+
+After we compile the program, the console will be held to wait us put in and what we put in will be transmitted to `str` and `i` respectively.
+
+A whole program can be like this
+
+```c
+#include <stdio.h>
+int main( ) {
+ 
+   char str[100];
+   int i;
+ 
+   printf( "Enter a value :");
+   scanf("%s %d", str, &i);
+ 
+   printf( "\nYou entered: %s %d ", str, i);
+   printf("\n");
+   return 0;
+}
+```
+
+### 1.12.3 Placeholder
+
+In `printf` and `scanf`, placeholders are often used. There are many types of placeholders.
+
+| Placeholder | Type |
+| --- | --- |
+| `%a` and `%A` | floating number |
+| `%c` | character |
+| `%s` | string |
+| `%d` | decimalism integer |
+| `%e` and `%E` | float with scientific notation |
+| `%i` | integer, very similar to `%d` |
+| `%f` | decimals including `float` and `double` |
+| `%g` and `%G` | floating number with 6 significat figures, if the figures are more than 6, it will use scientific notation |
+| `%o` | octonary integer |
+| `%x` | hexadecimal integer |
+| `%u` | unsigner integer |
+| `%n` | put out the times of strings which are put out |
+| `%%` | put out a per cent `%` |
+| `%hd` | short decimalism integer |
+| `%ho` | short octonary integer |
+| `%hx` | short hexadecimal integer |
+| `%hu` | unsigned short integer |
+| `%ld` | long decimalism integer |
+| `%lo` | long octonaty integer |
+| `%lx` | long hexadecimal integer |
+| `%lu` | long unsigned integer |
+| `%lld` | long long decimalism integer |
+| `%llo` | long long octonaty integer |
+| `%llx` | long long hexadecimal integer |
+| `%lu` | long long unsigned integer |
+| `%Le` | long double type floating with scientific notation |
+| `%Lf` | long double type floating number |

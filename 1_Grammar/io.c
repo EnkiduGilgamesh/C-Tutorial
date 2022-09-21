@@ -1,13 +1,13 @@
 /*-*- gcc 10.3.0 -*-*/
 /*-*- coding:utf-8 -*-*/
 /***************************************************************************************************
-* File: \static.c                                                                                  *
+* File: \io.c                                                                                      *
 * Project: 1_Grammar                                                                               *
-* Created Date: Tuesday Sep 20th 2022, 4:41:48 pm                                                  *
+* Created Date: Wednesday Sep 21st 2022, 9:45:57 am                                                *
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 21/09/2022 09:53:51                                                               *
+* Last Modified: 21/09/2022 09:53:46                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -18,28 +18,15 @@
 ***************************************************************************************************/
 
 #include <stdio.h>
-
-void func1(void);
-
-/* global static */
-static int count=10;
+int main( ) {
  
-int main()
-{
-  while (count--) {
-      func1();
-  }
-  return 0;
+   char str[100];
+   int i;
+ 
+   printf( "Enter a value :");
+   scanf("%s %d", str, &i);
+ 
+   printf( "\nYou entered: %s %d ", str, i);
+   printf("\n");
+   return 0;
 }
-
-void func1(void)
-{
-/* 'thingy' only be initialized once
- * Every time we call func1, the `thingy` will not be destoryed or initailized
- */
-  static int thingy=5;
-  thingy++;
-  printf("The value of thingy is %d ， count is %d\n", thingy, count);
-}
-
-
