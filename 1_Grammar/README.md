@@ -1,8 +1,5 @@
 # 1 Grammar
 
-- [ ] data type enum, list, pointer...
-- [x] storage type
-- [ ] constant
 - [ ] data type example
 
 - [1 Grammar](#1-grammar)
