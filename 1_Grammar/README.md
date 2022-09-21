@@ -1,7 +1,7 @@
 # 1 Grammar
 
 - [ ] data type enum, list, pointer...
-- [ ] storage type
+- [x] storage type
 - [ ] constant
 - [ ] data type example
 
@@ -51,6 +51,19 @@
     - [1.11.1 printf](#1111-printf)
     - [1.12.2 scanf](#1122-scanf)
     - [1.12.3 Placeholder](#1123-placeholder)
+    - [1.12.4 Character Constant](#1124-character-constant)
+  - [1.13 Preprocessor](#113-preprocessor)
+  - [1.14 Enumeration](#114-enumeration)
+    - [1.14.1 Definition](#1141-definition)
+    - [1.14.2 Visit](#1142-visit)
+  - [1.15 typedef](#115-typedef)
+  - [1.16 Structure](#116-structure)
+    - [1.16.1 Definition](#1161-definition)
+    - [1.16.2 Initialization](#1162-initialization)
+  - [1.17 Union](#117-union)
+    - [1.17.1 Definition](#1171-definition)
+    - [1.17.2 Visit](#1172-visit)
+  - [1.18 Data Converting](#118-data-converting)
 
 ## 1.1 Variable
 
@@ -93,6 +106,8 @@ In C11 standard, these names are added in,
 | `_Alignas` | `_Alignof` | `_Atomic` |
 | `_Generic` | `_Noreturn` | `_Static_assert` |
 | `_Thread_local` | `` | `` |
+
+A variable should **not longer than 32 characters**.
 
 ## 1.2 Operator
 
@@ -1332,3 +1347,358 @@ In `printf` and `scanf`, placeholders are often used. There are many types of pl
 | `%lu` | long long unsigned integer |
 | `%Le` | long double type floating with scientific notation |
 | `%Lf` | long double type floating number |
+
+### 1.12.4 Character Constant
+
+In C language, there are some strings being reserved for special usage. Most of these strings are often started with `\`.
+
+| String | Function |
+| --- | --- |
+| `\\` | character `\` |
+| `\'` | character `'` |
+| `\"` | character `"` |
+| `\?` | character `?` |
+| `\a` | alarm bell |
+| `\b` | backspace |
+| `\f` | form-feed |
+| `\n` | line break |
+| `\r` | carriage return |
+| `\t` | horizontal tab |
+| `\v` | vertical tab |
+
+## 1.13 Preprocessor
+
+We can use preprocesser to define a const. The preprocesser is used at the beginning of the program, and it can be visited by any functions and cannot be modified after defined.
+
+```c
+#define identifier value
+```
+
+For instance
+
+```c
+#include <stdio.h>
+ 
+#define LENGTH 10   
+#define WIDTH  5
+#define NEWLINE '\n'
+ 
+int main()
+{  
+   int area;  
+  
+   area = LENGTH * WIDTH;
+   printf("value of area : %d", area);
+   printf("%c", NEWLINE);
+ 
+   return 0;
+}
+```
+
+## 1.14 Enumeration
+
+Enumeration is one of the data types in C language. It can rapidly name a series of numbers.
+
+### 1.14.1 Definition
+
+We can define a enumeration like this
+
+```c
+enum DAY
+{
+      MON=1, TUE, WED, THU, FRI, SAT, SUN
+};
+```
+
+The first element in an enumeration is defaultly 0, but we can set it as what we want. And the latter element is 1 bigger than the former. We also can set the value of any element among an enumeration,
+
+```c
+enum season {spring, summer=3, autumn, winter};
+```
+
+Notice that the `DAY` and `season` are just a **tag** of enumeration, not varialble names. To visit an enumeration, we need to name it firstly.
+
+```c
+enum DAY day;
+```
+
+Or we can create a enumeration when we define the type.
+
+```c
+enum DAY
+{
+      MON=1, TUE, WED, THU, FRI, SAT, SUN
+} day;
+```
+
+The type name is not even essential.
+
+```c
+enum
+{
+      MON=1, TUE, WED, THU, FRI, SAT, SUN
+} day;
+```
+
+### 1.14.2 Visit
+
+We can visit the element in enumeration by its name.
+
+```c
+#include <stdio.h>
+ 
+enum DAY
+{
+      MON=1, TUE, WED, THU, FRI, SAT, SUN
+};
+ 
+int main()
+{
+    enum DAY day;
+    day = WED;
+    printf("%d",day);
+    return 0;
+}
+```
+
+But only the enumeration with continuous value can be traversed. For instance
+
+```c
+#include <stdio.h>
+ 
+enum DAY
+{
+      MON=1, TUE, WED, THU, FRI, SAT, SUN
+} day;
+int main()
+{
+    for (day = MON; day <= SUN; day++) {
+        printf("枚举元素：%d \n", day);
+    }
+}
+```
+
+## 1.15 typedef
+
+The keyword `typedef` in C language is used to rename a existing data type, or define a new type of data.
+
+```c
+typedef unsigned char BYTE;
+
+BYTE  b1, b2;
+
+BYTE OperBYTE(BYTE b);
+```
+
+```c
+typedef struct
+{
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+} Books;
+```
+
+## 1.16 Structure
+
+Structure is a data type that contains a group of data which are difined by users, even these data are different types.
+
+### 1.16.1 Definition
+
+We can define a structure to store a book's property
+
+```c
+struct Books
+{
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+} book;
+```
+
+In *1.15* we have introduced the way through `typedef` to define a structure.
+
+Then we can use the tag to declare a data type named `Books`
+
+```c
+Books book1, books2[20], *books3;
+```
+
+### 1.16.2 Initialization
+
+We can initialize a structure when we define it.
+
+```c
+struct Books
+{
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+} book = {"C Language", "Wenren Muyan", "Programming language", 123456};
+```
+
+Or we can initialize the element in a structure one by one. Notice that we visit the element of a structure through `.` operator.
+
+```c
+int main(){
+   struct Books Book1; 
+   strcpy( Book1.title, "C Programming");
+   strcpy( Book1.author, "Nuha Ali"); 
+   strcpy( Book1.subject, "C Programming Tutorial");
+   Book1.book_id = 6495407;
+
+   /* statement */
+}
+```
+
+## 1.17 Union
+
+Union is a very special data type. A union has several different types of data to option. All of the data will be storaged in the same address in internal storage, but only one data can be storaged in one time.
+
+### 1.17.1 Definition
+
+Defining a union is very similar to defining a structure.
+
+```c
+union Data
+{
+   int i;
+   float f;
+   char  str[20];
+} data;
+```
+
+The size of a union is equivalent the largest size among data types in the union's options. For instance, we can check the size of union `Data` we have defined above
+
+```c
+int main( )
+{
+   union Data data;        
+ 
+   printf( "Memory size occupied by data : %d\n", sizeof(data));
+ 
+   return 0;
+}
+```
+
+We will get this result
+
+```bash
+Memory size occupied by data : 20
+```
+
+### 1.17.2 Visit
+
+We can visit a union's element like structure, but we need to remember that only one data can be storaged in one time.
+
+```c
+#include <stdio.h>
+#include <string.h>
+ 
+union Data
+{
+   int i;
+   float f;
+   char  str[20];
+};
+ 
+int main( )
+{
+   union Data data;        
+ 
+   data.i = 10;
+   data.f = 220.5;
+   strcpy( data.str, "C Programming");
+ 
+   printf( "data.i : %d\n", data.i);
+   printf( "data.f : %f\n", data.f);
+   printf( "data.str : %s\n", data.str);
+ 
+   return 0;
+}
+```
+
+Compiling the program above, we will get the result
+
+```bash
+data.i : 1917853763
+data.f : 4122360580327794860452759994368.000000
+data.str : C Programming
+```
+
+We can see only the last assignment is correct, because the formers are both recovered.
+
+## 1.18 Data Converting
+
+We can convert one data type to another through the way underneath
+
+```c
+(type_name) expression
+```
+
+For instance
+
+```c
+#include <stdio.h>
+ 
+int main()
+{
+   int sum = 17, count = 5;
+   double mean;
+ 
+   mean = (double) sum / count;
+   printf("Value of mean : %f\n", mean );
+ 
+}
+```
+
+In the instance, we convert integer sum to double float.
+
+The convertiong can be implicit. For instance
+
+```c
+#include <stdio.h>
+ 
+int main()
+{
+   int  i = 17;
+   char c = 'c'; /* ascii 值是 99 */
+   int sum;
+ 
+   sum = i + c;
+   printf("Value of sum : %d\n", sum );
+ 
+}
+```
+
+In this instance, the character `c` is converted to integer. This kind of converting is called **Integer Promotion**.
+
+In computing, if the operands are different types, the compiler will convert one of them to the higher priority as the under image showing.
+
+![Converting](https://www.runoob.com/wp-content/uploads/2014/08/usual_arithmetic_conversion.png)
+
+For instance
+
+```c
+#include <stdio.h>
+ 
+int main()
+{
+   int  i = 17;
+   int c = 99; /* ascii 值是 99 */
+   float sum;
+ 
+   sum = i + c;
+   printf("Value of sum : %f\n", sum );
+ 
+}
+```
+
+We will get the result
+
+```bash
+Value of sum : 116.000000
+```
