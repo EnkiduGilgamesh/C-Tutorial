@@ -607,7 +607,7 @@ switch(expression){
 }
 ```
 
-If the value of `expression` is equal to one of the `case`'s `constant-expression`, the statement under that `case` will be executed. If none of the `constant-expression` match the value, the statement under `default` will be executed. Like the `else`, `default` is also not essential. For instance
+If the value of `expression` is equal to one of the `case`'s `constant-expression`, the statement after that `case` will be executed until the `swith` statement's end or meeting a `break`. If none of the `constant-expression` match the value, the statement under `default` will be executed. Like the `else`, `default` is also not essential. For instance
 
 ```c
 int main ()
@@ -620,7 +620,7 @@ int main ()
    case 'A' :
       printf("Great!\n" );
       break;
-   case 'B' :
+   case 'B' :break;
    case 'C' :
       printf("Well done!\n" );
       break;
