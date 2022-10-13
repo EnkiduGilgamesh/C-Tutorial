@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 12/10/2022 02:27:22                                                               *
+* Last Modified: 13/10/2022 09:04:40                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -24,13 +24,20 @@
 int main(){
     int list[8] = {1, 2, 3, 4, 5, 6, 7, 8};
 
-    vector * v1 = initFromArrary(list, 8, 10);
+    //vector * v1 = initFromArrary(list, 8, 10);
 
     vector * v = (vector *)malloc(sizeof(vector));
 
-    initVector(v, 5);
+    initVector(v, 10);
 
-    for(int i = 0; i < 5; i++){
+    int res = josephus(v, 8, 1, 3);
+
+    freeVector(v);
+    printf("%d", sizeof(v));
+    printf("\n");
+    printf("%d", res);
+
+    /*for(int i = 0; i < 5; i++){
         insertVectorNode(v, i, -1);
     }
 
@@ -41,7 +48,7 @@ int main(){
     printVector(v2);
     printf("\n");
     reserveVector(v1);
-    printVector(v1);
+    printVector(v1);*/
     
     system("pause");
     return 0;

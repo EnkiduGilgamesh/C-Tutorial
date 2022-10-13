@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 12/10/2022 01:56:28                                                               *
+* Last Modified: 13/10/2022 10:16:35                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -20,8 +20,9 @@
 #ifndef _VECTOR_H
 #define _VECTOR_H
 
-typedef enum {FALSE, TRUE} bool;
+#define nValue -2147483648
 
+typedef enum {FALSE, TRUE} bool;
 typedef int elem;                       // set Elem as int defaultly
 
 typedef struct{
@@ -47,7 +48,13 @@ elem getVectorNode(vector * v, int i);              // return the value of the v
 int findVectorNode(vector * v, elem x);             // return the number of elements in vector which are the same with x
 bool insertVectorNode(vector * v, elem x, int i);   // insert x at the position i of a vector, if success, return TRUE; otherwise return FALSE
 bool removeVectorNode(vector * v, int i);           // remove the element at the position of a vector, if success, return TRUE; otherwise return FALSE
+bool isEmptyVector(vector * v);                     // if v is empty return true
+bool isFullVector(vector * v);                      // if v is full return true
 
 void reserveVector(vector * v);                     // reserve the elements in vector
+void makeEmptyVector(vector * v);                   // make a vector empty
+
+// other functions
+int josephus(vector * v, int num, int start, int m);//
 
 #endif

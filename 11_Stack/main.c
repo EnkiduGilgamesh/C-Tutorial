@@ -1,13 +1,13 @@
 /*-*- gcc 10.3.0 -*-*/
 /*-*- coding:utf-8 -*-*/
 /***************************************************************************************************
-* File: \static.c                                                                                  *
-* Project: 1_Grammar                                                                               *
-* Created Date: Tuesday Sep 20th 2022, 4:41:48 pm                                                  *
+* File: \main.c                                                                                    *
+* Project: 11_Stack                                                                                *
+* Created Date: Thursday Oct 13th 2022, 8:46:50 pm                                                 *
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 11/10/2022 08:07:3                                                                *
+* Last Modified: 13/10/2022 09:28:22                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -19,28 +19,30 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "stack.h"
 
-void func1(void);
+int main(){
+    int list[8] = {1, 2, 3, 4, 5, 6, 7, 8};
 
-/* global static */
-static int count=10;
- 
-int main()
-{
-  while (count--) {
-      func1();
-  }
+    stack * s = (stack *)malloc(sizeof(stack));
+    initStack(s, 10);
 
-  system("pause");
-  return 0;
-}
+    stack * s1 = initFromArray(list, 8, 10);
+    stack * s2 = initFromStack(s1, 10);
 
-void func1(void)
-{
-/* 'thingy' only be initialized once
- * Every time we call func1, the `thingy` will not be destoryed or initailized
- */
-  static int thingy=5;
-  thingy++;
-  printf("The value of thingy is %d, count is %d\n", thingy, count);
+    printf("top=%d, size=%d\n", s1->top, s1->size);
+    printf("top=%d, size=%d\n", s2->top, s2->size);
+
+    printStack(s1);
+    printf("\n");
+    printStack(s2);
+
+    pushStack(s1, 9);
+    popStack(s1);
+    pushStack(s1, 9);
+    printStack(s1);
+    printf("\n%d\n", getPopStack(s1));
+
+    system("pause");
+    return 0;
 }

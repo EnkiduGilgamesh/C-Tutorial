@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 12/10/2022 02:26:50                                                               *
+* Last Modified: 13/10/2022 08:37:33                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -41,7 +41,6 @@ void freeVector(vector * v){
 }
 
 // assignment
-// TODO: add lSize parameter
 vector * initFromArrary(elem * l, int listLen, int maxSize){
 
     if(listLen <= 0){
@@ -56,8 +55,8 @@ vector * initFromArrary(elem * l, int listLen, int maxSize){
 
     vector * res = (vector *)malloc(sizeof(vector));
 
-    res->size = maxSize;
-    res->len = maxSize > listLen ? listLen : maxSize;
+    res->size = maxSize > listLen ? listLen : maxSize;
+    res->len = res->size > listLen ? listLen : res->size;
     getVector(res);
 
     for(int i = 0; i < res->len; i++)
@@ -99,7 +98,8 @@ bool printVector(vector * v){
     else{
         printf("[");
         for(int i = 0; i < v->len; i++){
-            if(sizeof(elem) <= sizeof(int)) printf("%d", v->elems[i]);
+            if(sizeof(elem) == sizeof(char)) printf("%c", v->elems[i]);
+            else if(sizeof(elem) <= sizeof(int)) printf("%d", v->elems[i]);
             else printf("%f", v->elems[i]);
 
             if(i != v->len - 1) printf(", ");
@@ -110,11 +110,14 @@ bool printVector(vector * v){
 }
 
 // function
-// TODO: minus i
 elem getVectorNode(vector * v, int i){
+    if(isEmptyVector(v)){
+        printf("The Vector is Empty!\n");
+        return nValue;
+    }
     if(i < -v->len || i >= v->len){
         printf("Invalid Visit Position!\n");
-        return -1;
+        return nValue;
     }
     return v->elems[(i + v->len) % v->len];
 }
@@ -130,11 +133,12 @@ int findVectorNode(vector * v, elem x){
 }
 
 bool insertVectorNode(vector * v, elem x, int i){
-    if(v->len == v->size){
+    if(isFullVector(v)){
         printf("Overflow!\n");
         return FALSE;
     }
     else if(i + v->len < -1 || i > v->len){
+       
         printf("Invalid Insert Position!\n");
         return FALSE;
     }
@@ -167,6 +171,16 @@ bool removeVectorNode(vector * v, int i){
     }
 }
 
+bool isEmptyVector(vector * v){
+    if(v->len == 0) return TRUE;
+    else return FALSE;
+}
+
+bool isFullVector(vector * v){
+    if(v->len == v->size) return TRUE;
+    else return FALSE;
+}
+
 void reserveVector(vector * v){
     int left = 0, right = v->len - 1;
     while(left < right){
@@ -174,4 +188,26 @@ void reserveVector(vector * v){
         v->elems[left++] = v->elems[right];
         v->elems[right--] = temp;
     }
+}
+
+void makeEmptyVector(vector * v){
+    v->len = 0;
+}
+
+// josephus question
+int josephus(vector * v, int num, int start, int m){
+    
+    for(int i = 0; i < num; i ++)
+        insertVectorNode(v, i + 1, i);
+
+    while(num){
+        start = (start + m - 1) % num == 0 ? num : \
+            (start + m - 1) % num;
+        int temp = getVectorNode(v, start - 1);
+        removeVectorNode(v, start - 1);
+        insertVectorNode(v, temp, v->len);
+        num--;
+    }
+
+    return v->elems[v->len - 1];
 }
