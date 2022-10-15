@@ -1,13 +1,13 @@
 /*-*- gcc 10.3.0 -*-*/
 /*-*- coding:utf-8 -*-*/
 /***************************************************************************************************
-* File: \io.c                                                                                      *
-* Project: 1_Grammar                                                                               *
-* Created Date: Wednesday Sep 21st 2022, 9:45:57 am                                                *
+* File: \pointer.c                                                                                 *
+* Project: 2_Pointer                                                                               *
+* Created Date: Saturday Oct 15th 2022, 8:25:09 pm                                                 *
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 15/10/2022 08:15:20                                                               *
+* Last Modified: 15/10/2022 08:48:33                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -18,16 +18,17 @@
 ***************************************************************************************************/
 
 #include <stdio.h>
-int main( ) {
  
-   char str[100];
-   int i;
- 
-   printf( "Enter a value :");
-   scanf("%s %d", str, &i);
- 
-   printf( "\nYou entered: %s %d ", str, i);
-   printf( "\n%p", &i );
-   printf("\n");
+int main ()
+{
+    int i = 5737418239;
+    char c = 'I';
+    int * p;              // define a pointer variable
+    p = &i;
+    char * p2 = &c;
+
+   printf("the address of i is:  %p\n", p);
+   printf("%x\n", *p);
+   printf("%c\n", *p2);
    return 0;
 }

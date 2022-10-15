@@ -16,6 +16,8 @@
     - [1.3.1 Integer](#131-integer)
     - [1.3.2 Float](#132-float)
     - [1.3.3 Void](#133-void)
+    - [1.3.4 sizeof](#134-sizeof)
+    - [1.3.5 Number System](#135-number-system)
   - [1.4 Conditional Statement](#14-conditional-statement)
     - [1.4.1 if...else](#141-ifelse)
     - [1.4.2 ?: Operator](#142--operator)
@@ -455,6 +457,29 @@ $$
 ### 1.3.3 Void
 
 If a object has no value, it is the void type. In function, if no value will be returned, we should set it void type.
+
+### 1.3.4 sizeof
+
+The function `sizeof(data_type)` can return the size of the data type you give. For instance
+
+```c
+#include <stdio.h>
+
+int main(){
+   print("The size of int is %d", sizeof(int));
+
+   return 0;
+}
+```
+
+### 1.3.5 Number System
+
+For integer, if an integer starts with:
+
+- **none**, it means it uses decimalism, for example: 10, 20;
+- **0**, it means it uses octonary, for example: 045, 021;
+- **0b**, it means it uses binary, for example: 0b11101101;
+- **0x**, it means it uses hexadecimal for example: 0x21458adf.
 
 ## 1.4 Conditional Statement
 
@@ -1344,6 +1369,21 @@ In `printf` and `scanf`, placeholders are often used. There are many types of pl
 | `%lu` | long long unsigned integer |
 | `%Le` | long double type floating with scientific notation |
 | `%Lf` | long double type floating number |
+| `%p` | put out a hexadecimal number with **8 digits if the system is 32 bit, whereas 16 digits if the system is 64 bit** |
+
+We can expand the placeholder as `%num1.num2..`. The `num1` means that the out will hold how many digits place whereas the `num2` means how many digits will visitable. For example
+
+```c
+printf("%5.4d\n", 22);
+printf("%5.3d\n", 22);
+```
+
+The code will get this result
+
+```terminal
+ 0022
+  022
+```
 
 ### 1.12.4 Character Constant
 
@@ -1662,7 +1702,7 @@ The convertiong can be implicit. For instance
 int main()
 {
    int  i = 17;
-   char c = 'c'; /* ascii 值是 99 */
+   char c = 'c'; /* The value of ascii is 99 */
    int sum;
  
    sum = i + c;
