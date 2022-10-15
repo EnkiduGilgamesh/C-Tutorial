@@ -1,13 +1,13 @@
 /*-*- gcc 10.3.0 -*-*/
 /*-*- coding:utf-8 -*-*/
 /***************************************************************************************************
-* File: \stack.h                                                                                   *
+* File: \infix.h                                                                                   *
 * Project: 11_Stack                                                                                *
-* Created Date: Thursday Oct 13th 2022, 9:37:19 am                                                 *
+* Created Date: Friday Oct 14th 2022, 9:22:47 am                                                   *
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 14/10/2022 10:50:48                                                               *
+* Last Modified: 14/10/2022 09:22:47                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -17,39 +17,13 @@
 * --------------------------------------------------------------------------------                 *
 ***************************************************************************************************/
 
-#ifndef __STACK_H
-#define __STACK_H
+#ifndef __INFIX_H
+#define __INFIX_H
 
-#define nValue -2147483648
+#include "stack.h"
 
-typedef enum {FALSE, TRUE} bool;
-typedef int elemStack;                                   // set Elem as int defaultly
+int str2Num(const char * str);
 
-typedef struct{
-    elemStack * elems;
-    int top;
-    int size;
-} stack;
 
-// initialize
-void getStack(stack * s);
-void initStack(stack * s, int size);
-void freeStack(stack * s);
-
-// assignment
-stack * initFromArray(const elemStack * s, const int listLen, const int maxSize);
-stack * initFromStack(const stack * s, const int maxSize);
-
-// print
-bool printStack(const stack * s);
-
-// functions
-bool pushStack(stack * s, elemStack x);                  // push the stack
-bool popStack(stack *s);                                 // pop the stack
-elemStack getPopStack(const stack * s);                  // return the pop element of the stack
-int lenStack(const stack * s);                           // return the length of the stack
-void makeEmptyStack(stack * s);
-bool isEmptyStack(const stack * s);
-bool isFullStack(const stack * s);
 
 #endif

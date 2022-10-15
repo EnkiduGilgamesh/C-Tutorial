@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 13/10/2022 10:16:35                                                               *
+* Last Modified: 14/10/2022 10:50:1                                                                *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -23,38 +23,38 @@
 #define nValue -2147483648
 
 typedef enum {FALSE, TRUE} bool;
-typedef int elem;                       // set Elem as int defaultly
+typedef int elemVector;                       // set Elem as int defaultly
 
 typedef struct{
-    elem * elems;
+    elemVector * elems;
     int size;
     int len;
 } vector;
 
 // initialize and free
-void getVector(vector * v);                         // ask for storage
-void initVector(vector * v, int size);              // initialize a vector
-void freeVector(vector * v);                        // free up a vector
+void getVector(vector * v);                                             // ask for storage
+void initVector(vector * v, int size);                                  // initialize a vector
+void freeVector(vector * v);                                            // free up a vector
 
 // assignment
-vector * initFromArrary(elem * l, int listLen, int maxSize);
-vector * initFromVector(vector * v, int maxSize);
+vector * initFromArrary(const elemVector * l, const int listLen, const int maxSize);
+vector * initFromVector(const vector * v, const int maxSize);
 
 // print
-bool printVector(vector * v);
+bool printVector(const vector * v);
 
 // function
-elem getVectorNode(vector * v, int i);              // return the value of the vector's position i
-int findVectorNode(vector * v, elem x);             // return the number of elements in vector which are the same with x
-bool insertVectorNode(vector * v, elem x, int i);   // insert x at the position i of a vector, if success, return TRUE; otherwise return FALSE
-bool removeVectorNode(vector * v, int i);           // remove the element at the position of a vector, if success, return TRUE; otherwise return FALSE
-bool isEmptyVector(vector * v);                     // if v is empty return true
-bool isFullVector(vector * v);                      // if v is full return true
+elemVector getVectorNode(const vector * v, const int i);                // return the value of the vector's position i
+int findVectorNode(const vector * v, const elemVector x);               // return the number of elements in vector which are the same with x
+bool insertVectorNode(vector * v, const elemVector x, const int i);     // insert x at the position i of a vector, if success, return TRUE; otherwise return FALSE
+bool removeVectorNode(vector * v, const int i);                         // remove the element at the position of a vector, if success, return TRUE; otherwise return FALSE
+bool isEmptyVector(const vector * v);                                   // if v is empty return true
+bool isFullVector(const vector * v);                                    // if v is full return true
 
-void reserveVector(vector * v);                     // reserve the elements in vector
-void makeEmptyVector(vector * v);                   // make a vector empty
+void reserveVector(vector * v);                                         // reserve the elements in vector
+void makeEmptyVector(vector * v);                                       // make a vector empty
 
 // other functions
-int josephus(vector * v, int num, int start, int m);//
+int josephus(vector * v, int num, int start, const int m);              // return the final position, and make the v's order as the out order
 
 #endif

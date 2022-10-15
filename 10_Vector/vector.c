@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 13/10/2022 08:37:33                                                               *
+* Last Modified: 14/10/2022 10:50:1                                                                *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -23,7 +23,7 @@
 
 // initialize and free
 void getVector(vector * v){
-    v->elems = (elem *)malloc(sizeof(elem) * v->size);
+    v->elems = (elemVector *)malloc(sizeof(elemVector) * v->size);
     if(v->elems == NULL) printf("Memory Allocation Error!\n");
 }
 
@@ -41,7 +41,7 @@ void freeVector(vector * v){
 }
 
 // assignment
-vector * initFromArrary(elem * l, int listLen, int maxSize){
+vector * initFromArrary(const elemVector * l, const int listLen, const int maxSize){
 
     if(listLen <= 0){
         printf("Init Failed, the Array is empty\n");
@@ -66,7 +66,7 @@ vector * initFromArrary(elem * l, int listLen, int maxSize){
 }
 
 // if the maxSize is bigger than the v->size, the new vector's size will be set as the v->size, otherwise the maxSize
-vector * initFromVector(vector * v, int maxSize){
+vector * initFromVector(const vector * v, const int maxSize){
     if(v->len <= 0){
         printf("Init Failed, the Vector is empty\n");
         return NULL;
@@ -90,7 +90,7 @@ vector * initFromVector(vector * v, int maxSize){
 }
 
 // print
-bool printVector(vector * v){
+bool printVector(const vector * v){
     if(v->len <= 0){
         printf("Empty Vector\n");
         return FALSE;
@@ -98,8 +98,8 @@ bool printVector(vector * v){
     else{
         printf("[");
         for(int i = 0; i < v->len; i++){
-            if(sizeof(elem) == sizeof(char)) printf("%c", v->elems[i]);
-            else if(sizeof(elem) <= sizeof(int)) printf("%d", v->elems[i]);
+            if(sizeof(elemVector) == sizeof(char)) printf("%c", v->elems[i]);
+            else if(sizeof(elemVector) <= sizeof(int)) printf("%d", v->elems[i]);
             else printf("%f", v->elems[i]);
 
             if(i != v->len - 1) printf(", ");
@@ -110,7 +110,7 @@ bool printVector(vector * v){
 }
 
 // function
-elem getVectorNode(vector * v, int i){
+elemVector getVectorNode(const vector * v, const int i){
     if(isEmptyVector(v)){
         printf("The Vector is Empty!\n");
         return nValue;
@@ -122,7 +122,7 @@ elem getVectorNode(vector * v, int i){
     return v->elems[(i + v->len) % v->len];
 }
 
-int findVectorNode(vector * v, elem x){
+int findVectorNode(const vector * v, const elemVector x){
     int num = 0;
     for(int i = 0; i < v->len; i ++){
         if(x == v->elems[i]) num++;
@@ -132,7 +132,7 @@ int findVectorNode(vector * v, elem x){
     else return 0;
 }
 
-bool insertVectorNode(vector * v, elem x, int i){
+bool insertVectorNode(vector * v, elemVector x, int i){
     if(isFullVector(v)){
         printf("Overflow!\n");
         return FALSE;
@@ -171,12 +171,12 @@ bool removeVectorNode(vector * v, int i){
     }
 }
 
-bool isEmptyVector(vector * v){
+bool isEmptyVector(const vector * v){
     if(v->len == 0) return TRUE;
     else return FALSE;
 }
 
-bool isFullVector(vector * v){
+bool isFullVector(const vector * v){
     if(v->len == v->size) return TRUE;
     else return FALSE;
 }
@@ -195,7 +195,7 @@ void makeEmptyVector(vector * v){
 }
 
 // josephus question
-int josephus(vector * v, int num, int start, int m){
+int josephus(vector * v, int num, int start, const int m){
     
     for(int i = 0; i < num; i ++)
         insertVectorNode(v, i + 1, i);

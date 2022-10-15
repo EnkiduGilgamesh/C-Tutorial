@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 13/10/2022 09:25:28                                                               *
+* Last Modified: 14/10/2022 10:50:48                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -23,7 +23,7 @@
 
 // initialize
 void getStack(stack * s){
-    s->elems = (elem *)malloc(sizeof(elem) * s->size);
+    s->elems = (elemStack *)malloc(sizeof(elemStack) * s->size);
     if(s->elems == NULL) printf("Memory Allocation Error!\n");
 }
 
@@ -41,7 +41,7 @@ void freeStack(stack * s){
 }
 
 // assignment
-stack * initFromArray(elem * l, int listLen, int maxSize){
+stack * initFromArray(const elemStack * l, const int listLen, const int maxSize){
     if(listLen <= 0){
         printf("Init Failed, the Array is empty\n");
         return NULL;
@@ -63,7 +63,7 @@ stack * initFromArray(elem * l, int listLen, int maxSize){
     return res;
 }
 
-stack * initFromStack(stack * s, int maxSize){
+stack * initFromStack(const stack * s, const int maxSize){
     if(isEmptyStack(s)){
         printf("Stack is Empty!\n");
         return NULL;
@@ -82,7 +82,7 @@ stack * initFromStack(stack * s, int maxSize){
 }
 
 // print
-bool printStack(stack * s){
+bool printStack(const stack * s){
     if(s->top <= -1){
         printf("Empty Stack\n");
         return FALSE;
@@ -90,8 +90,8 @@ bool printStack(stack * s){
     else{
         printf("[");
         for(int i = 0; i <= s->top; i++){
-            if(sizeof(elem) == sizeof(char)) printf("%c", s->elems[i]);
-            else if(sizeof(elem) <= sizeof(int)) printf("%d", s->elems[i]);
+            if(sizeof(elemStack) == sizeof(char)) printf("%c", s->elems[i]);
+            else if(sizeof(elemStack) <= sizeof(int)) printf("%d", s->elems[i]);
             else printf("%f", s->elems[i]);
 
             if(i != s->top) printf(", ");
@@ -102,7 +102,7 @@ bool printStack(stack * s){
 }
 
 // functions
-bool pushStack(stack * s, elem x){
+bool pushStack(stack * s, elemStack x){
     if(isFullStack(s)){
         printf("Overflow!\n");
         return FALSE;
@@ -122,7 +122,7 @@ bool popStack(stack * s){
     return TRUE;
 }
 
-elem getPopStack(stack * s){
+elemStack getPopStack(const stack * s){
     if(isEmptyStack(s)){
         printf("Empty Stack!\n");
         return nValue;
@@ -131,7 +131,7 @@ elem getPopStack(stack * s){
     return s->elems[s->top];
 }
 
-int lenStack(stack * s){
+int lenStack(const stack * s){
     return s->top + 1;
 }
 
@@ -139,12 +139,12 @@ void makeEmptyStack(stack * s){
     s->top = -1;
 }
 
-bool isEmptyStack(stack * s){
+bool isEmptyStack(const stack * s){
     if(s->top == -1) return TRUE;
     else return FALSE;
 }
 
-bool isFullStack(stack * s){
+bool isFullStack(const stack * s){
     if(s->top + 1 == s->size) return TRUE;
     else return FALSE;
 }
