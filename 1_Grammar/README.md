@@ -452,7 +452,25 @@ $$
 | `double` | 8 bytes | 2.3E-308~1.7E+308 | 15 |
 | `long double` | 16 bytes | 3.4E-4932~1.1E+4932 | 19 |
 
-![Difference between system](https://www.runoob.com/wp-content/uploads/2014/09/32-64.jpg)TODO:
+In different systems and different compilers, the size of a data type may be different. The table shows some details.
+
+| Data Type | Windows MVSC |  | Windows Mingw64 | | Linux gcc | |
+| --- | --- | --- | --- | --- | --- | --- |
+| | Win32 | x64 | Win32 | x64 | i686 | x86_64 |
+| char | 1 | | 1 | 1  | 1 | 1 |
+| unsigned char | 1 | | -- | | 1 | 1 |
+| short | 2 | | 2 | 2 | 2 | 2 |
+| unsigned short | 2 | | -- | | 2 | 2 |
+| int | 4 | | 4 | 4 | 4 | 4 |
+| unsigned int | 4 | | -- | | 4 | 4 |
+| long | 4 | | 4 | 4 | 4 | 8 |
+| unsigned long | 4 | | -- | | 4 | 8 |
+| float | 4 | | 4 | 4 | 4 | 4 |
+| double | 8 | | 8 | 8 | 8 | 8 |
+| long int | 4 | | -- | | 8 | 8 |
+| long long | 8 | | 8 | 8 | 8 | 8 |
+| long double | 8 | | -- | | 12 | 16 |
+| pointer | 4 | 8 | 4 | 8 | 4 | 8 |
 
 ### 1.3.3 Void
 
@@ -1020,7 +1038,7 @@ int main ()
 
 ### 1.7.3 Formal Parameter
 
-When we define a function, the parameters we give to the function is acually variables. They are declaredautomatically when we define the function and can be visited in any place in the function. Also the parameters are given the highest priority in the function if there is several variables with a same name. For instance
+When we define a function, the parameters we give to the function is acually variables. They are declared automatically when we define the function and can be visited in any place in the function. Also the parameters are given the highest priority in the function if there is several variables with a same name. For instance
 
 ```c
 /* global variable */
