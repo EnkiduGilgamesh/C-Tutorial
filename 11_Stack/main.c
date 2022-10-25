@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 13/10/2022 09:28:22                                                               *
+* Last Modified: 25/10/2022 10:56:11                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -19,10 +19,13 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "stack.h"
+#include <string.h>
+#include "infix.h"
+
+#define MAXLEN 20
 
 int main(){
-    int list[8] = {1, 2, 3, 4, 5, 6, 7, 8};
+    /*int list[8] = {1, 2, 3, 4, 5, 6, 7, 8};
 
     stack * s = (stack *)malloc(sizeof(stack));
     initStack(s, 10);
@@ -41,7 +44,21 @@ int main(){
     popStack(s1);
     pushStack(s1, 9);
     printStack(s1);
-    printf("\n%d\n", getPopStack(s1));
+    printf("\n%d\n", getStackTop(s1));*/
+
+    //hanoi(8, 'a', 'b', 'c');
+
+    typedef char elemStack;
+
+    char * infix = (char *)malloc(sizeof(char)*MAXLEN);
+
+    scanf("%s", infix);
+    int size = strlen(infix);
+    //printf("%d", size);
+
+    char * suffix = (char *)malloc(sizeof(char)*MAXLEN);
+    exprInfix2Suffix(infix, size, suffix);
+    printf("%s\n", suffix);                             // ERROR: additional elemeent in stack
 
     system("pause");
     return 0;

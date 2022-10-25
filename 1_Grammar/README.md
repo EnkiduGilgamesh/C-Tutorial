@@ -1389,7 +1389,7 @@ In `printf` and `scanf`, placeholders are often used. There are many types of pl
 | `%Lf` | long double type floating number |
 | `%p` | put out a hexadecimal number with **8 digits if the system is 32 bit, whereas 16 digits if the system is 64 bit** |
 
-We can expand the placeholder as `%num1.num2..`. The `num1` means that the out will hold how many digits place whereas the `num2` means how many digits will visitable. For example
+We can expand the placeholder as `%num1.num2..`. The `num1` means that the out will hold how many digits place whereas the `num2` means how many digits are visitable. For example
 
 ```c
 printf("%5.4d\n", 22);

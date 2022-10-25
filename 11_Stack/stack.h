@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 14/10/2022 10:50:48                                                               *
+* Last Modified: 25/10/2022 09:15:42                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -37,7 +37,7 @@ void initStack(stack * s, int size);
 void freeStack(stack * s);
 
 // assignment
-stack * initFromArray(const elemStack * s, const int listLen, const int maxSize);
+stack * initFromArray(const elemStack * s, const int listLen, const int maxSize);       //TODO: const
 stack * initFromStack(const stack * s, const int maxSize);
 
 // print
@@ -46,10 +46,13 @@ bool printStack(const stack * s);
 // functions
 bool pushStack(stack * s, elemStack x);                  // push the stack
 bool popStack(stack *s);                                 // pop the stack
-elemStack getPopStack(const stack * s);                  // return the pop element of the stack
+elemStack getStackTop(const stack * s);                  // return the pop element of the stack
 int lenStack(const stack * s);                           // return the length of the stack
 void makeEmptyStack(stack * s);
 bool isEmptyStack(const stack * s);
 bool isFullStack(const stack * s);
+
+// hanoi question
+void hanoi(int n, char a, char b, char c);               // move all the elem from a to b 
 
 #endif

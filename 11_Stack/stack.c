@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 14/10/2022 10:50:48                                                               *
+* Last Modified: 25/10/2022 09:37:21                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -122,7 +122,7 @@ bool popStack(stack * s){
     return TRUE;
 }
 
-elemStack getPopStack(const stack * s){
+elemStack getStackTop(const stack * s){
     if(isEmptyStack(s)){
         printf("Empty Stack!\n");
         return nValue;
@@ -147,4 +147,14 @@ bool isEmptyStack(const stack * s){
 bool isFullStack(const stack * s){
     if(s->top + 1 == s->size) return TRUE;
     else return FALSE;
+}
+
+// hanoi question
+void hanoi(int n, char a, char b, char c){
+    if(n==1) printf("move %c to %c\n", a, c);
+    else{
+        hanoi(n-1, a, c, b);
+        hanoi(1, a, b, c);
+        hanoi(n-1, b, a, c);
+    }
 }
