@@ -1394,6 +1394,21 @@ We can expand the placeholder as `%num1.num2..`. The `num1` means that the out w
 ```c
 printf("%5.4d\n", 22);
 printf("%5.3d\n", 22);
+printf("%5d\n", 22);
+printf("%.3d\n", 22);
+```
+
+If we add a `-` in front of the `num1`, the printed number will align at the left instead of the default right. For example
+
+```c
+printf("%-5.4d\n", 22);
+printf("%-5.3d\n", 22);
+```
+
+For `float` type, the `num2` means the precision. For example
+
+```c
+printf("%7.2f", 1234.5678);
 ```
 
 The code will get this result
