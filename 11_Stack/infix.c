@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 25/10/2022 10:54:26                                                               *
+* Last Modified: 27/10/2022 01:29:39                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -48,28 +48,40 @@ void exprInfix2Suffix(const char * infixExpr, const int exprSize, char * suffixE
             while(getStackTop(operands) != '('){
                 suffixExpr[j++] = getStackTop(operands);
                 popStack(operands);
-                suffixExpr[j] = '\0';
-                printf("%s\n", suffixExpr);
+                //suffixExpr[j] = '\0';
+                //printf("%s\n", suffixExpr);
             }
             popStack(operands);
         }
         else{
-            if(isEmptyStack(operands)) pushStack(operands, suffixExpr[i]);
-            while(compOper(infixExpr[i], getStackTop(operands))<=0){
-                suffixExpr[j++] = getStackTop(operands);
-                popStack(operands);
-                //suffixExpr[j] = '\0';
-                //printf("%s\n", suffixExpr);
+            while(1){
+                if(isEmptyStack(operands)){
+                    pushStack(operands, infixExpr[i]);
+                    break;
+                }
+                else if(getStackTop(operands) == '('){
+                    pushStack(operands, infixExpr[i]);
+                    break;
+                }
+                else{
+                    if(compOper(infixExpr[i], getStackTop(operands)) <= 0){
+                        suffixExpr[j++] = getStackTop(operands);
+                        popStack(operands);
+                        continue;
+                    }
+                    else{
+                        pushStack(operands, infixExpr[i]);
+                        break;
+                    }
+                }
             }
-            pushStack(operands, infixExpr[i]);
         }
     }
-    printStack(operands);
-    printf("\n%d\n", lenStack(operands));
+
     while(!isEmptyStack(operands)){ 
         suffixExpr[j++] = getStackTop(operands);
         popStack(operands);
     }
     suffixExpr[j] = '\0';
-}
+}               // TODO: minus number and number bigger than 10
 
