@@ -1,4 +1,4 @@
-# 0 Basic Structure
+# Basic Structure
 
 ```c
 #include <stdio.h>

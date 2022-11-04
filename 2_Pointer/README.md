@@ -1,17 +1,16 @@
-# 2 Pointer
+TODO:
 
-- [2 Pointer](#2-pointer)
-  - [2.1 Basic](#21-basic)
-  - [2.2 NULL](#22-null)
-  - [2.3 Array and Pointer](#23-array-and-pointer)
-  - [2.4 Operator](#24-operator)
-  - [2.5 Pointer Parameter](#25-pointer-parameter)
-  - [2.6 Return Pointer](#26-return-pointer)
-  - [2.7 malloc](#27-malloc)
-  - [2.8 Function Pointer](#28-function-pointer)
-  - [2.9 Callback Function](#29-callback-function)
+- [1 Basic](#1-basic)
+- [2 NULL](#2-null)
+- [3 Array and Pointer](#3-array-and-pointer)
+- [4 Operator](#4-operator)
+- [5 Pointer Parameter](#5-pointer-parameter)
+- [6 Return Pointer](#6-return-pointer)
+- [7 malloc](#7-malloc)
+- [8 Function Pointer](#8-function-pointer)
+- [9 Callback Function](#9-callback-function)
 
-## 2.1 Basic
+# 1 Basic
 
 Every variable has an address on the internal storage. We can use operator `&` to get the address. For instance
 
@@ -45,7 +44,7 @@ int main ()
 }
 ```
 
-## 2.2 NULL
+# 2 NULL
 
 The `NULL` pointer means the pointer points nowhere. Notice that if we define a pointer but not initialize it in time, the poniter will point a random place. So **it's a good habit to make it point `NULL` when it is not the time to initialize it**. And **if we delete a variable, all the pointers point it should be assigned to `NULL`**. For example
 
@@ -69,7 +68,9 @@ if(ptr)                 // if a pointer is NULL, it will return 0;
 if(!ptr)
 ```
 
-## 2.3 Array and Pointer
+The `NULL`'s value is **0x0**.
+
+# 3 Array and Pointer
 
 The array name actually is a pointer points to the first element's address. For example
 
@@ -101,7 +102,7 @@ int main ()
 
 The strings are the same.
 
-## 2.4 Operator
+# 4 Operator
 
 The pointer supports four kinds of arithmetic operator, `++`, `--`, `+`, `-`.
 
@@ -161,7 +162,7 @@ int main ()
 }
 ```
 
-## 2.5 Pointer Parameter
+# 5 Pointer Parameter
 
 A formal parameter doesn't exist if a function ends. If we want to modify an array or a string, we can pass the pointer to functions, so we can get and change the value among it through the address directly. So our modification can be kept out of the function. For instance
 
@@ -194,7 +195,7 @@ double getAverage(int *arr, int size){
 }
 ```
 
-## 2.6 Return Pointer
+# 6 Return Pointer
 
 A pointer also can be a return value of a function. But notice that the address of local variable in function should not be the return value, unless the variable is `static`. For instance
 
@@ -237,7 +238,7 @@ int main ()
 }
 ```
 
-## 2.7 malloc
+# 7 malloc
 
 The function `malloc` is from standard library `stdlib.h`. We don't always know a array's size when we initialize it. The `malloc` and `realloc` function can help us dynamically provide space for arrays. And `free` function can help us free up an array's space.
 
@@ -265,7 +266,7 @@ int main(){
 }
 ```
 
-## 2.8 Function Pointer
+# 8 Function Pointer
 
 A pointer also can points a function, for instance
 
@@ -293,7 +294,7 @@ int main(void){
 }
 ```
 
-## 2.9 Callback Function
+# 9 Callback Function
 
 If a function has at least one function pointer as its parameter, the function can be called callback function. For instance
 

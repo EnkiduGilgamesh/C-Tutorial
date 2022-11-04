@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 27/10/2022 01:29:39                                                               *
+* Last Modified: 3/11/2022 09:08:12                                                                *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -38,39 +38,37 @@ int compOper(const char a, const char b){
 }
 
 void exprInfix2Suffix(const char * infixExpr, const int exprSize, char * suffixExpr){
-    stack * operands;
-    initStack(operands, exprSize);
+    stack * operators;
+    initStack(operators, exprSize);
     int j = 0;
     for(int i = 0; i < exprSize; i++){
         if(infixExpr[i] >= '0' && infixExpr[i] <= '9') suffixExpr[j++] = infixExpr[i];
-        else if(infixExpr[i] == '(') pushStack(operands, infixExpr[i]);
+        else if(infixExpr[i] == '(') pushStack(operators, infixExpr[i]);
         else if(infixExpr[i] == ')'){
-            while(getStackTop(operands) != '('){
-                suffixExpr[j++] = getStackTop(operands);
-                popStack(operands);
-                //suffixExpr[j] = '\0';
-                //printf("%s\n", suffixExpr);
+            while(getStackTop(operators) != '('){
+                suffixExpr[j++] = getStackTop(operators);
+                popStack(operators);
             }
-            popStack(operands);
+            popStack(operators);
         }
         else{
             while(1){
-                if(isEmptyStack(operands)){
-                    pushStack(operands, infixExpr[i]);
+                if(isEmptyStack(operators)){
+                    pushStack(operators, infixExpr[i]);
                     break;
                 }
-                else if(getStackTop(operands) == '('){
-                    pushStack(operands, infixExpr[i]);
+                else if(getStackTop(operators) == '('){
+                    pushStack(operators, infixExpr[i]);
                     break;
                 }
                 else{
-                    if(compOper(infixExpr[i], getStackTop(operands)) <= 0){
-                        suffixExpr[j++] = getStackTop(operands);
-                        popStack(operands);
+                    if(compOper(infixExpr[i], getStackTop(operators)) <= 0){
+                        suffixExpr[j++] = getStackTop(operators);
+                        popStack(operators);
                         continue;
                     }
                     else{
-                        pushStack(operands, infixExpr[i]);
+                        pushStack(operators, infixExpr[i]);
                         break;
                     }
                 }
@@ -78,10 +76,84 @@ void exprInfix2Suffix(const char * infixExpr, const int exprSize, char * suffixE
         }
     }
 
-    while(!isEmptyStack(operands)){ 
-        suffixExpr[j++] = getStackTop(operands);
-        popStack(operands);
+    while(!isEmptyStack(operators)){ 
+        suffixExpr[j++] = getStackTop(operators);
+        popStack(operators);
     }
     suffixExpr[j] = '\0';
 }               // TODO: minus number and number bigger than 10
 
+bool checkInfix(const char * infixExpr, const int exprSize){
+    stack * brackets;
+    initStack(brackets, exprSize);
+
+    for (int i = 0; i < exprSize; i++){
+        if(infixExpr[i] == '(') pushStack(brackets, infixExpr[i]);
+        else if(infixExpr[i] == ')'){
+            if(isEmptyStack(brackets)){
+                printf("The expression is valid!\n");
+                return FALSE;
+            }
+            else popStack(brackets);
+        }
+        else continue;
+    }
+
+    if(!isEmptyStack(brackets)){
+        printf("The expression is valid!\n");
+        return FALSE;
+    }
+
+    return TRUE;
+}                       // TODO: more functions. valid symbol, valid
+
+int calcInfixSuffix(const char * suffixExpr, const int exprSize){
+    typedef int elemStack;
+    stack * curOperands;
+    initStack(curOperands, exprSize);
+
+    int holder = 0;
+    pushStack(curOperands, holder);                 // The first number is minus TODO: minus number in brackets
+
+    int res = 0, charop = 0;
+
+    for(int i = 0; i < exprSize; i++){
+        if(suffixExpr[i] >= '0' && suffixExpr[i] <= '9'){
+            charop = suffixExpr[i] - '0';
+            pushStack(curOperands, charop);
+            continue;
+        }
+        else{
+            /* get operands */
+            int o2 = getStackTop(curOperands);
+            popStack(curOperands);
+            int o1 = getStackTop(curOperands);
+            popStack(curOperands);
+            switch(suffixExpr[i]){
+                case '+':
+                    res = o1 + o2;
+                    pushStack(curOperands, res);
+                    break;
+                case '-':
+                    res = o1 + o2;
+                    pushStack(curOperands, res);
+                    break;
+                case '*':
+                    res = o1 * o2;
+                    pushStack(curOperands, res);
+                    break;
+                case '/':
+                    res = o1 / o2;
+                    pushStack(curOperands, res);
+                    break;
+                case '%':
+                    res = o1 % o2;
+                    pushStack(curOperands, res);
+                    break;
+            }
+        }
+        
+    }
+
+    return getStackTop;
+}

@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 25/10/2022 10:56:11                                                               *
+* Last Modified: 28/10/2022 09:04:4                                                                *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -53,12 +53,14 @@ int main(){
     char * infix = (char *)malloc(sizeof(char)*MAXLEN);
 
     scanf("%s", infix);
+    
     int size = strlen(infix);
-    //printf("%d", size);
-
-    char * suffix = (char *)malloc(sizeof(char)*MAXLEN);
-    exprInfix2Suffix(infix, size, suffix);
-    printf("%s\n", suffix);                             // ERROR: additional elemeent in stack
+    
+    if(checkInfix(infix, size)){
+        char * suffix = (char *)malloc(sizeof(char)*MAXLEN);
+        exprInfix2Suffix(infix, size, suffix);
+        printf("%s\n", suffix);
+    }
 
     system("pause");
     return 0;

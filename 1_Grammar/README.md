@@ -1,70 +1,69 @@
-# 1 Grammar
+TODO:
 
 - [ ] data type example
 
-- [1 Grammar](#1-grammar)
-  - [1.1 Variable](#11-variable)
-  - [1.2 Operator](#12-operator)
-    - [1.2.1 Arithmetic Operators](#121-arithmetic-operators)
-    - [1.2.2 Relational Operators](#122-relational-operators)
-    - [1.2.3 Logical Operators](#123-logical-operators)
-    - [1.2.4 Bitwise Operators](#124-bitwise-operators)
-    - [1.2.5 Assignment Operators](#125-assignment-operators)
-    - [1.2.6 Other Operators](#126-other-operators)
-    - [1.2.6 Priority](#126-priority)
-  - [1.3 Data Type](#13-data-type)
-    - [1.3.1 Integer](#131-integer)
-    - [1.3.2 Float](#132-float)
-    - [1.3.3 Void](#133-void)
-    - [1.3.4 sizeof](#134-sizeof)
-    - [1.3.5 Number System](#135-number-system)
-  - [1.4 Conditional Statement](#14-conditional-statement)
-    - [1.4.1 if...else](#141-ifelse)
-    - [1.4.2 ?: Operator](#142--operator)
-    - [1.4.3 switch...case](#143-switchcase)
-  - [1.5 Loop](#15-loop)
-    - [1.5.1 while...loop](#151-whileloop)
-    - [1.5.2 for..loop](#152-forloop)
-    - [1.5.3 do..while...loop](#153-dowhileloop)
-    - [1.5.4 control statement](#154-control-statement)
-  - [1.6 Function](#16-function)
-    - [1.6.1 Definition](#161-definition)
-    - [1.6.2 Declaration](#162-declaration)
-    - [1.6.3 Calling](#163-calling)
-    - [1.6.4 Recursion](#164-recursion)
-  - [1.7 Scope](#17-scope)
-    - [1.7.1 Local Variable](#171-local-variable)
-    - [1.7.2 Global Variable](#172-global-variable)
-    - [1.7.3 Formal Parameter](#173-formal-parameter)
-  - [1.8 Storage Class](#18-storage-class)
-    - [1.8.1 auto](#181-auto)
-    - [1.8.2 register](#182-register)
-    - [1.8.3 static](#183-static)
-    - [1.8.4 external](#184-external)
-  - [1.9 Array](#19-array)
-    - [1.9.1 Declarati](#191-declarati)
-    - [1.9.2 Initialization](#192-initialization)
-    - [1.9.3 Visit](#193-visit)
-  - [1.10 String](#110-string)
-  - [1.11 Standard IO](#111-standard-io)
-    - [1.11.1 printf](#1111-printf)
-    - [1.12.2 scanf](#1122-scanf)
-    - [1.12.3 Placeholder](#1123-placeholder)
-    - [1.12.4 Character Constant](#1124-character-constant)
-  - [1.13 Preprocessor](#113-preprocessor)
-  - [1.14 Enumeration](#114-enumeration)
-    - [1.14.1 Definition](#1141-definition)
-    - [1.14.2 Visit](#1142-visit)
-  - [1.15 typedef](#115-typedef)
-  - [1.16 Structure](#116-structure)
-    - [1.16.1 Definition](#1161-definition)
-    - [1.16.2 Initialization](#1162-initialization)
-  - [1.17 Union](#117-union)
-    - [1.17.1 Definition](#1171-definition)
-    - [1.17.2 Visit](#1172-visit)
-  - [1.18 Data Converting](#118-data-converting)
+- [1 Variable](#1-variable)
+- [2 Operator](#2-operator)
+  - [2.1 Arithmetic Operators](#21-arithmetic-operators)
+  - [2.2 Relational Operators](#22-relational-operators)
+  - [2.3 Logical Operators](#23-logical-operators)
+  - [2.4 Bitwise Operators](#24-bitwise-operators)
+  - [2.5 Assignment Operators](#25-assignment-operators)
+  - [2.6 Other Operators](#26-other-operators)
+  - [2.7 Priority](#27-priority)
+- [3 Data Type](#3-data-type)
+  - [3.1 Integer](#31-integer)
+  - [3.2 Float](#32-float)
+  - [3.3 Void](#33-void)
+  - [3.4 sizeof](#34-sizeof)
+  - [3.5 Number System](#35-number-system)
+- [4 Conditional Statement](#4-conditional-statement)
+  - [4.1 if...else](#41-ifelse)
+  - [4.2 ?: Operator](#42--operator)
+  - [4.3 switch...case](#43-switchcase)
+- [5 Loop](#5-loop)
+  - [5.1 while...loop](#51-whileloop)
+  - [5.2 for..loop](#52-forloop)
+  - [5.3 do..while...loop](#53-dowhileloop)
+  - [5.4 control statement](#54-control-statement)
+- [6 Function](#6-function)
+  - [6.1 Definition](#61-definition)
+  - [6.2 Declaration](#62-declaration)
+  - [6.3 Calling](#63-calling)
+  - [6.4 Recursion](#64-recursion)
+- [7 Scope](#7-scope)
+  - [7.1 Local Variable](#71-local-variable)
+  - [7.2 Global Variable](#72-global-variable)
+  - [7.3 Formal Parameter](#73-formal-parameter)
+- [8 Storage Class](#8-storage-class)
+  - [8.1 auto](#81-auto)
+  - [8.2 register](#82-register)
+  - [8.3 static](#83-static)
+  - [8.4 external](#84-external)
+- [9 Array](#9-array)
+  - [9.1 Declarati](#91-declarati)
+  - [9.2 Initialization](#92-initialization)
+  - [9.3 Visit](#93-visit)
+- [10 String](#10-string)
+- [11 Standard IO](#11-standard-io)
+  - [11.1 printf](#111-printf)
+  - [12.2 scanf](#122-scanf)
+  - [12.3 Placeholder](#123-placeholder)
+  - [12.4 Character Constant](#124-character-constant)
+- [13 Preprocessor](#13-preprocessor)
+- [14 Enumeration](#14-enumeration)
+  - [14.1 Definition](#141-definition)
+  - [14.2 Visit](#142-visit)
+- [15 typedef](#15-typedef)
+- [16 Structure](#16-structure)
+  - [16.1 Definition](#161-definition)
+  - [16.2 Initialization](#162-initialization)
+- [17 Union](#17-union)
+  - [17.1 Definition](#171-definition)
+  - [17.2 Visit](#172-visit)
+- [18 Data Converting](#18-data-converting)
 
-## 1.1 Variable
+# 1 Variable
 
 We can define variable to store different data structure. In Clanguage, we can use letter `a-z`, `A-Z`, symbol `_` in the beginning and none or several letters, `_` or numbers following to define a variable. The legal variables and illegal variables are listing underneath.
 
@@ -108,13 +107,13 @@ In C11 standard, these names are added in,
 
 A variable should **not longer than 32 characters**.
 
-## 1.2 Operator
+# 2 Operator
 
 We can divide most operators into six classes by their usage, which are arithmetic, relational, logical, bitwise, assignment and other operators.
 
 In addition, different operators need different number of operands. The unary operators means only 1 operand is needed when we use those operators, the binary operators means two, while the ternary operators means three.
 
-### 1.2.1 Arithmetic Operators
+## 2.1 Arithmetic Operators
 
 There are seven kinds of aritmetic operators.
 
@@ -215,7 +214,7 @@ The value of line 7 - c is 9
 The value of line 8 - c is 9
 ```
 
-### 1.2.2 Relational Operators
+## 2.2 Relational Operators
 
 Relation operators are used to compare two operands. These operators are all binary operators.
 
@@ -284,7 +283,7 @@ Line 4 - a is not bigger b
 Line 5 - b is not smaller a
 ```
 
-### 1.2.3 Logical Operators
+## 2.3 Logical Operators
 
 There are three logical operators, 'or', 'and', and 'not'.
 
@@ -331,11 +330,11 @@ int main()
 
 Notice that in C language, any variable whose value is not **0** or `null` will be regarded as `true` in logical operation.
 
-### 1.2.4 Bitwise Operators
+## 2.4 Bitwise Operators
 
 TODO: [https://www.runoob.com/cprogramming/c-operators.html](https://www.runoob.com/cprogramming/c-operators.html)
 
-### 1.2.5 Assignment Operators
+## 2.5 Assignment Operators
 
 | Operator | Example | Function |
 | --- | --- | --- |
@@ -351,7 +350,7 @@ TODO: [https://www.runoob.com/cprogramming/c-operators.html](https://www.runoob.
 | `*^=` | `c ^= 2` | be equivalant to `c = c ^ 2` |
 | `\|=` | `c \|= 2` | be equivalant to `c = c \| 2` |
 
-### 1.2.6 Other Operators
+## 2.6 Other Operators
 
 | Operator | Operand | Function |
 | --- | --- | --- |
@@ -360,7 +359,7 @@ TODO: [https://www.runoob.com/cprogramming/c-operators.html](https://www.runoob.
 | `*` | one | give a address as its operand and it will return the variable storage in it |
 | `?:` | three |  |
 
-### 1.2.6 Priority
+## 2.7 Priority
 
 Different operators are set with different priority when the program is compiled, in order to make the code more simple and readable.
 
@@ -420,7 +419,7 @@ The value of "(a + b) * (c / d)" is 90
 The value of "a + (b * c) / d" is 50
 ```
 
-## 1.3 Data Type
+# 3 Data Type
 
 Every variable has its type, and the type decide the space the variable will use in internal storage and its valua range. In the beiginning we only introduce the integer, float, and the void type.
 
@@ -430,7 +429,7 @@ $$
 1\ byte = 8\ bits
 $$
 
-### 1.3.1 Integer
+## 3.1 Integer
 
 | type | space | range |
 | --- | --- | --- |
@@ -444,7 +443,7 @@ $$
 | `long` | 4 bytes | -2,147,483,648\~2,147,483,647 |
 | `unsigned long` | 4 bytes | 0\~4,294,967,295 |
 
-### 1.3.2 Float
+## 3.2 Float
 
 | type | space | range | Precision(significant bit) |
 | --- | --- | --- | --- |
@@ -472,11 +471,11 @@ In different systems and different compilers, the size of a data type may be dif
 | long double | 8 | | -- | | 12 | 16 |
 | pointer | 4 | 8 | 4 | 8 | 4 | 8 |
 
-### 1.3.3 Void
+## 3.3 Void
 
 If a object has no value, it is the void type. In function, if no value will be returned, we should set it void type.
 
-### 1.3.4 sizeof
+## 3.4 sizeof
 
 The function `sizeof(data_type)` can return the size of the data type you give. For instance
 
@@ -490,7 +489,7 @@ int main(){
 }
 ```
 
-### 1.3.5 Number System
+## 3.5 Number System
 
 For integer, if an integer starts with:
 
@@ -499,11 +498,11 @@ For integer, if an integer starts with:
 - **0b**, it means it uses binary, for example: 0b11101101;
 - **0x**, it means it uses hexadecimal for example: 0x21458adf.
 
-## 1.4 Conditional Statement
+# 4 Conditional Statement
 
 Conditional statement will be only executed when the conditions are true.
 
-### 1.4.1 if...else
+## 4.1 if...else
 
 The structure of `if...else...` is like underneath:
 
@@ -608,7 +607,7 @@ int main ()
 }
 ```
 
-### 1.4.2 ?: Operator
+## 4.2 ?: Operator
 
 We have known the ternary operators `?:`. It is actually is a conditional statement. It is used like this
 
@@ -632,7 +631,7 @@ int main()
 }
 ```
 
-### 1.4.3 switch...case
+## 4.3 switch...case
 
 The `switch` statement is like this
 
@@ -682,11 +681,11 @@ int main ()
 }
 ```
 
-## 1.5 Loop
+# 5 Loop
 
 Sometimes, we need execute some statements several times. For these statement, loop statement can make us easier.
 
-### 1.5.1 while...loop
+## 5.1 while...loop
 
 One kind of loop is `while` loop. It is used like this
 
@@ -718,7 +717,7 @@ int main ()
 }
 ```
 
-### 1.5.2 for..loop
+## 5.2 for..loop
 
 Another kind of loop is `for` loop. This kind of loop is ofen used to those loop we need set loop times for. It is used like this
 
@@ -746,7 +745,7 @@ int main ()
 }
 ```
 
-### 1.5.3 do..while...loop
+## 5.3 do..while...loop
 
 Similar to `while` loop, the `do...while` loop is used like this
 
@@ -779,7 +778,7 @@ int main ()
 }
 ```
 
-### 1.5.4 control statement
+## 5.4 control statement
 
 There is two common control statement in loop, `break` and `continue`.
 
@@ -869,11 +868,11 @@ int main ()
 }
 ```
 
-## 1.6 Function
+# 6 Function
 
 Function is a group of statement doing a particular task. Every C program contains at least one function, whose name is `main`. Generaly, to use function, there are three steps, 'declaration', 'definition' and 'calling'.
 
-### 1.6.1 Definition
+## 6.1 Definition
 
 We firstly introduce how to define a function.
 
@@ -906,7 +905,7 @@ int max(int num1, int num2)
 }
 ```
 
-### 1.6.2 Declaration
+## 6.2 Declaration
 
 We declare function like this
 
@@ -924,7 +923,7 @@ int min(int,int);
 /* both OK */
 ```
 
-### 1.6.3 Calling
+## 6.3 Calling
 
 We can call function which we have defined before to complete a task in particular situation. For instance, we can call the `max` function defined in *1.6.1*
 
@@ -948,7 +947,7 @@ int main ()
 }
 ```
 
-### 1.6.4 Recursion
+## 6.4 Recursion
 
 We can even call a function in itself body. This operation is called recursion. A classic example is *Fibonacci Series*.
 
@@ -987,7 +986,7 @@ int  main()
 }
 ```
 
-## 1.7 Scope
+# 7 Scope
 
 In C language, every variable has its scope which is related to the variable's declaration place. We cannot visit the variable beyond its scope. Totally, we have three place to declare variable.
 
@@ -995,7 +994,7 @@ In C language, every variable has its scope which is related to the variable's d
 - Global variable: out of all functions;
 - Formal parameter: the formal parameter when defining a function.
 
-### 1.7.1 Local Variable
+## 7.1 Local Variable
 
 Local variables only exist in the block where it is declared. For instance
 
@@ -1012,7 +1011,7 @@ else
 
 The `long sum` only exists in `if` block, whereas the `int sum` only exists in the `else` block. Out of the block, we cannot visit the variable named `sum`. There is another situation where we declare `sum` out of `if...else` and redeclare `sum` in `if...else` block, the compiler will use the declaration in the nearest, in other word, the declaration in `if...else` block as priority.
 
-### 1.7.2 Global Variable
+## 7.2 Global Variable
 
 The global variable is declared out of any functions so it can be visited by any functions. For instance
 
@@ -1036,7 +1035,7 @@ int main ()
 }
 ```
 
-### 1.7.3 Formal Parameter
+## 7.3 Formal Parameter
 
 When we define a function, the parameters we give to the function is acually variables. They are declared automatically when we define the function and can be visited in any place in the function. Also the parameters are given the highest priority in the function if there is several variables with a same name. For instance
 
@@ -1069,7 +1068,7 @@ int sum(int a, int b)
 }
 ```
 
-## 1.8 Storage Class
+# 8 Storage Class
 
 In C language, there are four kinds of storage classes, `auto`, `register`, `static`, `extern`. We can define a variable's storage class before its data type
 
@@ -1077,17 +1076,17 @@ In C language, there are four kinds of storage classes, `auto`, `register`, `sta
 storage_lass data_type a;
 ```
 
-### 1.8.1 auto
+## 8.1 auto
 
 The class `auto` is defaultly used by local variable.
 
-### 1.8.2 register
+## 8.2 register
 
 As its name, variable with `register` class will be storaged in register(Actually, different machine may deal with this class in different ways, even not storage it in register).
 
 Because storaged in register, this kind of variable cannot bigger than a register(generally 1 byte), but we can visit `register` class more rapidly.
 
-### 1.8.3 static
+## 8.3 static
 
 There are two ways to use `static` class.
 
@@ -1139,7 +1138,7 @@ The value of thingy is 14 ， count is 1
 The value of thingy is 15 ， count is 0
 ```
 
-### 1.8.4 external
+## 8.4 external
 
 The class `external` is used to decorate a global variable. It will make the variable visitable to all files. If the variable is already defined, then the declaration will point to the pre-declaration. For instance, there are two `.c` files
 
@@ -1181,11 +1180,11 @@ Finally, we will get esult
 count is 5
 ```
 
-## 1.9 Array
+# 9 Array
 
 Array is one of the data types which can be used to storage a series data with same type.
 
-### 1.9.1 Declarati
+## 9.1 Declarati
 
 To declarate a array, the array size is essential, which is equal to the number of data we plan to storage in the array. We can also call it 'length'.
 
@@ -1201,7 +1200,7 @@ double balance[10];
 
 The `balance` is the array's name, and it can storage 10 double-type numbers.
 
-### 1.9.2 Initialization
+## 9.2 Initialization
 
 We can initialization array when we declare it.
 
@@ -1212,7 +1211,7 @@ double balance2[] = {1000.0, 2.0, 3.4, 7.0, 50.0};
 
 In this way, the array size is not essential. If the size is ignored, the compiler will default set its size as you give size.
 
-### 1.9.3 Visit
+## 9.3 Visit
 
 The operator `[]` is used to visit array's element. The first element in array's index is `0`, the second is `1`...
 
@@ -1230,7 +1229,7 @@ for(int i = 0; i < 9; i++){
 }
 ```
 
-## 1.10 String
+# 10 String
 
 String actually is a array made up by a series of characters and ended with `NULL` character `\0`.
 
@@ -1284,11 +1283,11 @@ int main ()
 }
 ```
 
-## 1.11 Standard IO
+# 11 Standard IO
 
 We have used `printf` function many times. In C language, we can use `printf` function to put out in console, `scanf` function to put in, both the two functions are defined in the `stdio.h`.
 
-### 1.11.1 printf
+## 11.1 printf
 
 The standard function `printf` is defined like this
 
@@ -1317,7 +1316,7 @@ This program will get
 Bob loves Rose.
 ```
 
-### 1.12.2 scanf
+## 12.2 scanf
 
 The `scanf`'s style is much similar to `printf`.
 
@@ -1354,7 +1353,7 @@ int main( ) {
 }
 ```
 
-### 1.12.3 Placeholder
+## 12.3 Placeholder
 
 In `printf` and `scanf`, placeholders are often used. There are many types of placeholders.
 
@@ -1418,7 +1417,7 @@ The code will get this result
   022
 ```
 
-### 1.12.4 Character Constant
+## 12.4 Character Constant
 
 In C language, there are some strings being reserved for special usage. Most of these strings are often started with `\`.
 
@@ -1436,7 +1435,7 @@ In C language, there are some strings being reserved for special usage. Most of 
 | `\t` | horizontal tab |
 | `\v` | vertical tab |
 
-## 1.13 Preprocessor
+# 13 Preprocessor
 
 We can use preprocesser to define a const. The preprocesser is used at the beginning of the program, and it can be visited by any functions and cannot be modified after defined.
 
@@ -1465,11 +1464,11 @@ int main()
 }
 ```
 
-## 1.14 Enumeration
+# 14 Enumeration
 
 Enumeration is one of the data types in C language. It can rapidly name a series of numbers.
 
-### 1.14.1 Definition
+## 14.1 Definition
 
 We can define a enumeration like this
 
@@ -1510,7 +1509,7 @@ enum
 } day;
 ```
 
-### 1.14.2 Visit
+## 14.2 Visit
 
 We can visit the element in enumeration by its name.
 
@@ -1548,7 +1547,7 @@ int main()
 }
 ```
 
-## 1.15 typedef
+# 15 typedef
 
 The keyword `typedef` in C language is used to rename a existing data type, or define a new type of data.
 
@@ -1570,11 +1569,11 @@ typedef struct
 } Books;
 ```
 
-## 1.16 Structure
+# 16 Structure
 
 Structure is a data type that contains a group of data which are difined by users, even these data are different types.
 
-### 1.16.1 Definition
+## 16.1 Definition
 
 We can define a structure to store a book's property
 
@@ -1596,7 +1595,7 @@ Then we can use the tag to declare a data type named `Books`
 Books book1, books2[20], *books3;
 ```
 
-### 1.16.2 Initialization
+## 16.2 Initialization
 
 We can initialize a structure when we define it.
 
@@ -1624,11 +1623,11 @@ int main(){
 }
 ```
 
-## 1.17 Union
+# 17 Union
 
 Union is a very special data type. A union has several different types of data to option. All of the data will be storaged in the same address in internal storage, but only one data can be storaged in one time.
 
-### 1.17.1 Definition
+## 17.1 Definition
 
 Defining a union is very similar to defining a structure.
 
@@ -1660,7 +1659,7 @@ We will get this result
 Memory size occupied by data : 20
 ```
 
-### 1.17.2 Visit
+## 17.2 Visit
 
 We can visit a union's element like structure, but we need to remember that only one data can be storaged in one time.
 
@@ -1701,7 +1700,7 @@ data.str : C Programming
 
 We can see only the last assignment is correct, because the formers are both recovered.
 
-## 1.18 Data Converting
+# 18 Data Converting
 
 We can convert one data type to another through the way underneath
 
