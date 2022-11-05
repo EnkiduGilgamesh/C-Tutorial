@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 25/10/2022 09:15:42                                                               *
+* Last Modified: 5/11/2022 04:37:5                                                                 *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -20,10 +20,8 @@
 #ifndef __STACK_H
 #define __STACK_H
 
-#define nValue -2147483648
-
-typedef enum {FALSE, TRUE} bool;
-typedef int elemStack;                                   // set Elem as int defaultly
+typedef enum{FALSE, TRUE} bool;
+typedef int elemStack;                                   // set Elem as int 
 
 typedef struct{
     elemStack * elems;

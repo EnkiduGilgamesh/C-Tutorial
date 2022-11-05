@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 14/10/2022 10:50:1                                                                *
+* Last Modified: 5/11/2022 04:36:52                                                                *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -113,11 +113,11 @@ bool printVector(const vector * v){
 elemVector getVectorNode(const vector * v, const int i){
     if(isEmptyVector(v)){
         printf("The Vector is Empty!\n");
-        return nValue;
+        exit(1);
     }
     if(i < -v->len || i >= v->len){
         printf("Invalid Visit Position!\n");
-        return nValue;
+        exit(1);
     }
     return v->elems[(i + v->len) % v->len];
 }

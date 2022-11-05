@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 14/10/2022 10:50:1                                                                *
+* Last Modified: 5/11/2022 04:36:37                                                                *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -19,8 +19,6 @@
 
 #ifndef _VECTOR_H
 #define _VECTOR_H
-
-#define nValue -2147483648
 
 typedef enum {FALSE, TRUE} bool;
 typedef int elemVector;                       // set Elem as int defaultly

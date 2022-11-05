@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 25/10/2022 09:37:21                                                               *
+* Last Modified: 5/11/2022 04:36:4                                                                 *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -125,7 +125,7 @@ bool popStack(stack * s){
 elemStack getStackTop(const stack * s){
     if(isEmptyStack(s)){
         printf("Empty Stack!\n");
-        return nValue;
+        exit(1);
     }
 
     return s->elems[s->top];

@@ -1,7 +1,10 @@
+# Grammar
+
 TODO:
 
 - [ ] data type example
 
+- [Grammar](#grammar)
 - [1 Variable](#1-variable)
 - [2 Operator](#2-operator)
   - [2.1 Arithmetic Operators](#21-arithmetic-operators)
