@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 5/11/2022 05:41:13                                                                *
+* Last Modified: 5/11/2022 05:48:13                                                                *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -75,9 +75,10 @@ int main(){
     deQueue(q);
     printf("\n%d  %d\n", q->front, q->rear);
     printQueue(q);
-    //for(int i = 0; i < 4; i++){
-    //    deQueue(q);
-    //}
+    int k;
+    for(k = 0; k < 4; k++){
+        deQueue(q);
+    }
     //for(int j = 0; j < 4; j++) enQueue(q, 10);
 
     printQueue(q);
