@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 17/11/2022 04:58:8                                                                *
+* Last Modified: 17/11/2022 06:49:31                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -43,9 +43,9 @@ void scanIntMatrix(matrix * m);
 void scanMatrix(matrix * m);
 
 // print
-bool printMatrix(matrix * m);
+void printMatrix(const matrix * m);
 
 // function
-matrix ** transposMatrix(matrix * m);
+matrix * transposMatrix(const matrix * m);
 
 #endif

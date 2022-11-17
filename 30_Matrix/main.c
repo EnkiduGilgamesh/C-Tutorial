@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 17/11/2022 09:29:43                                                               *
+* Last Modified: 17/11/2022 06:51:12                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -19,8 +19,25 @@
 
 
 #include <stdio.h>
+#include <stdlib.h>
+#include "matrix.h"
+
+#define W 2
+#define L 3
 
 int main(){
+    matrix * m = (matrix *)malloc(sizeof(matrix));
 
+    initMatrix(m, W, L);
+    
+    scanIntMatrix(m);
+    printMatrix(m);
+    printf("\n");
+
+    matrix * t_m = transposMatrix(m);
+    printMatrix(t_m);
+
+    system("pause");
+    
     return 0;
 }
