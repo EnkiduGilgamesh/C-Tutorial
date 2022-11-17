@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 17/11/2022 06:50:8                                                                *
+* Last Modified: 17/11/2022 06:56:34                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -80,7 +80,9 @@ void printMatrix(const matrix * m){
     for(int i = 0; i < m->width; i++){
         printf("[");
         for(int j = 0; j < m->length; j++){
-            printf("%d", m->elems[i][j]);
+            if(sizeof(elemMatrix) <= sizeof(int))
+                printf("%d", m->elems[i][j]);
+            else printf("%f", m->elems[i][j]);
             if(j != m->length - 1) printf(",");
         }
         printf("]");
