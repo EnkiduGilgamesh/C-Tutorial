@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 5/11/2022 05:48:13                                                                *
+* Last Modified: 10/11/2022 07:52:5                                                                *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -22,7 +22,7 @@
 #include "queue.h"
 
 int main(){
-    queue * q;
+    queue * q = (queue *)malloc(sizeof(queue));    
     initQueue(q, 4);
 
 
@@ -75,10 +75,9 @@ int main(){
     deQueue(q);
     printf("\n%d  %d\n", q->front, q->rear);
     printQueue(q);
-    int k;
-    for(k = 0; k < 4; k++){
-        deQueue(q);
-    }
+    //for(int i = 0; i < 4; i++){
+    //    deQueue(q);
+    //}
     //for(int j = 0; j < 4; j++) enQueue(q, 10);
 
     printQueue(q);
