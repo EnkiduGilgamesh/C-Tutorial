@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 17/11/2022 09:43:0                                                                *
+* Last Modified: 17/11/2022 04:58:8                                                                *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -36,6 +36,11 @@ typedef struct{
 void getMatrix(matrix * m);
 void initMatrix(matrix * m, const int width, const int length);             // a m*n matrix; m is the width, and the n is the length.
 void freeMatrix(matrix * m);
+
+// scan
+void scanFloatMatrix(matrix * m);
+void scanIntMatrix(matrix * m);
+void scanMatrix(matrix * m);
 
 // print
 bool printMatrix(matrix * m);
