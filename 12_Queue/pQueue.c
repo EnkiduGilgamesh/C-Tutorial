@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 10/11/2022 09:43:29                                                               *
+* Last Modified: 23/11/2022 03:52:51                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -17,51 +17,124 @@
 * --------------------------------------------------------------------------------                 *
 ***************************************************************************************************/
 
+
+// TODO: test
 #include <stdio.h>
 #include <stdlib.h>
+#include "queue.h"
 #include "pQueue.h"
 
+
 // initialize
-void getPQueue(pQueue * q){
-    q->elems = (elemPQueue *)malloc(sizeof(elemPQueue) * (q->size));
-    if(q->elems == NULL) printf("Memory Allocation Error!\n");
+void getPQueue(pQueue * pq){
+    pq->elems = (elemPQueue *)malloc(sizeof(elemPQueue) * (pq->size));
+    if(pq->elems == NULL) printf("Memory Allocation Error!\n");
 }
 
-void initPQueue(pQueue * q, const int size){                // the size here is the number of elemrnts
+void initPQueue(pQueue * pq, const int size){                // the size here is the number of elemrnts
     if(size <= 0) printf("Invalid Stack Size!\n");
     else{
-        q->size = size + 1;                                 // the q's size is the space it needs
-        q->num = 0;
-        getPQueue(q);
+        pq->size = size;
+        pq->front = 0;
+        getPQueue(pq);
     }
 }
 
-void freePQueue(pQueue * q){
-    free(q->elems);
+void freePQueue(pQueue * pq){
+    free(pq->elems);
 }
 
 // print
-bool printPQueue(const pQueue * q){
-    return TRUE;
+bool printPQueue(const pQueue * pq){
+    if(sizeof(pq->elems[pq->front]) <= sizeof(elemPQueue)){
+        printf("The queue is not a priority queue!");
+        return FALSE;
+    }
+    else if(isEmptyQueue(pq)){
+        printf("Empty Queue!\n");
+        return FALSE;
+    }
+    else{
+        printf("[");
+        for(int i = pq->front; (i + pq->size) % pq->size != pq->rear; i++){
+            int cur = (i + pq->size) % pq->size;
+            printf("(");
+            if(sizeof(elemQueue) == sizeof(char)) printf("%c", pq->elems[cur]->elem);
+            else if(sizeof(elemQueue) <= sizeof(int)) printf("%d", pq->elems[cur]->elem);
+            else printf("%f", pq->elems[cur]);
+            printf(", %d)", pq->elems[cur]->priority);
+
+            if(i < pq->front) printf("->");
+        }
+        printf("]");
+
+        return TRUE;
+    }
 }
 
 // functions
-void makeEmptyPQueue(pQueue * q){
-    q->num = 0;
+void makeEmptyPQueue(pQueue * pq){
+    pq->front = 0;
 }
 
-bool isEmptyPQuue(const pQueue * q){
-    if(q->num == 0) return TRUE;
+bool isEmptyPQuue(const pQueue * pq){
+    if(pq->front == 0) return TRUE;
     else return FALSE;
 }
 
-bool isFullPQueue(const pQueue * q){
-    if(q->num == q->size - 1) return TRUE;
+bool isFullPQueue(const pQueue * pq){
+    if(pq->front + 1 == pq->size) return TRUE;
     else return FALSE;
 }
 
-int lenPQueue(const pQueue * q){
-    return q->num;
+int lenPQueue(const pQueue * pq){
+    return pq->front + 1;
 }
 
+bool enPQueue(pQueue * pq, const elemPQueue * elem){
+    /*  */
+    if(isFullPQueue(pq)){
+        printf("Overflow!\n");
+        return FALSE;
+    }
+    else{
+        int i = 0;
+        elemPQueue * t;/*= (elemPQueue *)malloc(sizeof(elemPQueue));*/
+        for(i = 0; i < pq->front; i++){
+            if(elem->priority > pq->elems[i]->priority) i++;
+            else{
+                t = pq->elems[i];
+                pq->elems[i] = elem;
+                break;
+            }
+        }
+        for(++i; i < pq->front; i++){
+            elemPQueue * temp;
+            temp = pq->elems[i];
+            pq->elems[i] = t;
+            t = temp;
+        }
+        pq->elems[i] = t;
 
+        return TRUE;
+    }
+}
+
+bool dePQueue(pQueue * pq){
+    if(isEmptyPQuue(pq)){
+        printf("Empty Stack!\n");
+        return FALSE;
+    }
+    else{
+        pq->front--;
+        return TRUE;
+    }
+}
+
+elemPQueue getFrontPQueue(const pQueue * pq){
+    if(isEmptyPQuue(pq)){
+        printf("Empty Stack!\n");
+        exit(1);
+    }
+    else return pq->elems[q->front];
+}

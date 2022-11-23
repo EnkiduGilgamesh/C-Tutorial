@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 5/11/2022 04:29:42                                                                *
+* Last Modified: 23/11/2022 03:02:53                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -40,7 +40,7 @@ bool printQueue(const queue * q);
 
 // functions
 void makeEmptyQueue(queue * q);
-bool isEmptyQuue(const queue * q);
+bool isEmptyQueue(const queue * q);
 bool isFullQueue(const queue * q);
 int lenQueue(const queue * q);
 bool enQueue(queue * q, const elemQueue elem);              // the elem enqueue

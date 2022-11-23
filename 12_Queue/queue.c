@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 5/11/2022 05:23:7                                                                 *
+* Last Modified: 23/11/2022 03:12:4                                                                *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -46,7 +46,7 @@ void makeEmptyQueue(queue * q){
     q->front = q->rear = 0;
 }
 
-bool isEmptyQuue(const queue * q){
+bool isEmptyQueue(const queue * q){
     if(q->front == q->rear) return TRUE;
     else return FALSE;
 }
@@ -64,7 +64,7 @@ int lenQueue(const queue * q){
 
 bool printQueue(const queue * q){
     if(isEmptyQuue(q)){
-        printf("Empty Stack!\n");
+        printf("Empty Queue!\n");
         return FALSE;
     }
     else{
@@ -75,7 +75,7 @@ bool printQueue(const queue * q){
             else if(sizeof(elemQueue) <= sizeof(int)) printf("%d", q->elems[cur]);
             else printf("%f", q->elems[cur]);
 
-            if((i + 1 + q->size) % q->size != q->rear) printf(", ");
+            if((i + 1 + q->size) % q->size != q->rear) printf("->");
         }
         printf("]");
 

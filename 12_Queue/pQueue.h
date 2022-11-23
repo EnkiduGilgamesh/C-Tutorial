@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 10/11/2022 09:35:56                                                               *
+* Last Modified: 23/11/2022 03:52:52                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -20,31 +20,36 @@
 #ifndef __PQUEUE_H
 #define __PQUEUE_H
 
-typedef enum {FALSE, TRUE} bool;
-typedef int elemPQueue;
+#include "queue.h"
+
+// typedef enum {FALSE, TRUE} bool;
+typedef struct{
+    int priority;
+    elemQueue elem;
+} elemPQueue;
 
 typedef struct{
-    int num;
-    elemPQueue * elems;
+    int front;
+    elemPQueue ** elems;
     int size;
 } pQueue;
 
 // initialize
-void getPQueue(pQueue * q);
-void initPQueue(pQueue * q, const int size);                    // the size here is the number of elements, not the space it needs
-void freePQueue(pQueue * q);
+void getPQueue(pQueue * pq);
+void initPQueue(pQueue * pq, const int size);                    // the size here is the number of elements, not the space it needs
+void freePQueue(pQueue * pq);
 
 // print
 
-bool printPQueue(const pQueue * q);
+bool printPQueue(const pQueue * pq);
 
 // functions
-void makeEmptyPQueue(pQueue * q);
-bool isEmptyPQuue(const pQueue * q);
-bool isFullPQueue(const pQueue * q);
-int lenPQueue(const pQueue * q);
-bool enPQueue(pQueue * q, const elemPQueue elem);               // the elem enqueue
-bool dePQueue(pQueue * q);                                      // the front element dequeue
-elemPQueue getFrontPQueue(const pQueue * q);                    // return the front element
+void makeEmptyPQueue(pQueue * pq);
+bool isEmptyPQuue(const pQueue * pq);
+bool isFullPQueue(const pQueue * pq);
+int lenPQueue(const pQueue * pq);
+bool enPQueue(pQueue * pq, const elemPQueue * elem);             // the elem enqueue
+bool dePQueue(pQueue * pq);                                      // the front element dequeue
+elemPQueue getFrontPQueue(const pQueue * pq);                    // return the front element
 
 #endif
