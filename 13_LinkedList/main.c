@@ -1,13 +1,13 @@
 /*-*- gcc 10.3.0 -*-*/
 /*-*- coding:utf-8 -*-*/
 /***************************************************************************************************
-* File: \node.c                                                                                    *
+* File: \main.c                                                                                    *
 * Project: 13_LinkedList                                                                           *
-* Created Date: Wednesday Nov 23rd 2022, 4:10:57 pm                                                *
+* Created Date: Thursday Nov 24th 2022, 8:53:18 am                                                 *
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 24/11/2022 08:00:54                                                               *
+* Last Modified: 24/11/2022 09:12:0                                                                *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -20,47 +20,23 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "node.h"
+#include <time.h>
+#include "linkedlist.h"
 
+int main(){
+    linkedList * l = (linkedList *)malloc(sizeof(linkedList));
 
-// initialization
-void initNode(node * n, elemNode elem, node * next){
-    n->elem = elem;
-    n->next = next;
-}
+    int i, key, count = 0, k;
 
-node * getNode(elemNode elem, node * next){
-    node * newNode;
-    
-    newNode = (node *)malloc(sizeof(node));
-    if(newNode == NULL){
-        printf("Memory allocation error!");
-        exit(1);
+    srand(time(NULL));
+
+    initLinkedL(l);
+
+    for(i = 0; i < 10; i++){
+        insertAfterLinkedL(l, i);
     }
-    else{
-        initNode(newNode, elem, next);
-        return newNode;
-    }
-}
 
-node * deleteAfterNode(node * n){
-    node * ptr = n->next;
+    printLinkedL(l);
 
-    if(!ptr) return NULL;
-    
-    n->next = ptr->next;
-
-    return ptr;
-}
-
-void freeNode(node * n){
-    if(!n) return;
-
-    free(n);
-}
-
-// function
-void insertAfterNode(node * n, node * insertNode){
-    insertNode->next = n->next;
-    n->next = insertNode;
+    return 0;
 }

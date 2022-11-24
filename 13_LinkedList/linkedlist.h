@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 23/11/2022 06:53:38                                                               *
+* Last Modified: 24/11/2022 09:07:46                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -33,11 +33,15 @@ typedef struct{
 // initialization
 void initLinkedL(linkedList * l);
 
-// function
+// print
+bool printLinkedL(linkedList * l);
+
+// operation
 bool isEmptyLinkedL(linkedList * l);
-int nextNodeLinkedL(linkedList * l);
-int setPosLinkedL(linkedList * l, int pos);
+node * nextNodeLinkedL(linkedList * l);
+node * setPosLinkedL(linkedList * l, int pos);
 void insertAtLinkedL(linkedList * l, elemNode elem);
+void insertAfterLinkedL(linkedList * l, elemNode elem);
 void deleteAtLinkedL(linkedList * l);
 void deleteAfterLinkedL(linkedList * l);
 elemNode getNodeDataLinkedL(linkedList * l);

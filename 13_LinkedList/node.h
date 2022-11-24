@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 23/11/2022 05:53:30                                                               *
+* Last Modified: 24/11/2022 08:11:6                                                                *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -31,7 +31,7 @@ typedef struct Node{
 
 // initialization
 void initNode(node * n, elemNode elem, node * next);
-node * getNode(node * n);
+node * getNode(elemNode elem, node * n);
 node * deleteAfterNode(node * n);                                  // delete the node after and return the deleted node 
 void freeNode(node * n);
 
