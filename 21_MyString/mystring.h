@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 25/11/2022 10:51:14                                                               *
+* Last Modified: 25/11/2022 03:28:39                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -26,15 +26,16 @@
 typedef enum{FALSE, TRUE} bool;
 
 // BF
-int findBF(char * s, int sLen, char * sub, int subLen);
+int findBF(const char * s, const char * sub);
 
 // KMP
-void genKMPNext(int * next, char * s, int sLen);                      // generate next array in KMP algorithm
-int findKMP(char * s, int sLen, char * sub, int subLen);              // main function
+void genKMPNext(const char * s, const int sLen, int * next);          // generate next array in KMP algorithm
+int findKMP(const char * s, const char * sub); 
 
 // BM TODO: 
-void genBMBadChar(char * s, int sLen, int * badchar);
-void genBMGoodFix(char * s, int sLen, int * goodSufFix);
+void genBMBadChar(const char * s, const int sLen, int * badchar);
+void genBMGoodFix(const char * s, const int sLen, int * goodSufFix);
+int findBM(const char * s, const char * sub);
 
 
 #endif

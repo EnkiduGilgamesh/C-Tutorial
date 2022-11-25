@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 25/11/2022 10:50:55                                                               *
+* Last Modified: 25/11/2022 04:39:56                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -23,8 +23,9 @@
 #include "mystring.h"
 
 // BF
-int findBF(char * s, int sLen, char * sub, int subLen){
+int findBF(const char * s, const char * sub){
     int i, j;
+    int sLen = strlen(s), subLen = strlen(sub);
     for(i = 0; i < sLen; i++){
         if(sLen - i < subLen) return -1;
         int pos = i;
@@ -37,7 +38,7 @@ int findBF(char * s, int sLen, char * sub, int subLen){
 }
 
 // KMP
-void genKMPNext(int * next, char * s, int sLen){
+void genKMPNext(const char * s, const int sLen, int * next){
     int i = 0, j = -1;
 
     next[0] = -1;
@@ -53,14 +54,12 @@ void genKMPNext(int * next, char * s, int sLen){
     }
 }
 
-int findKMP(char * s, int sLen, char * sub, int subLen){        /* find 'sub' in 's' */
+int findKMP(const char * s, const char * sub){        /* find 'sub' in 's' */
     int i, j;
+    int sLen = strlen(s), subLen = strlen(sub);
     int * next = (int *)malloc(sizeof(int) * subLen);
 
-    genKMPNext(next, sub, subLen);
-
-    // for(int k = 0; k < subLen; k++) printf("%d, ", next[k]);
-    // printf("\n");
+    genKMPNext(sub, subLen, next);
    
     for(i = 0, j = 0; i < subLen && j < sLen;){
         if(sub[i] == s[j]){
@@ -77,29 +76,52 @@ int findKMP(char * s, int sLen, char * sub, int subLen){        /* find 'sub' in
 }
 
 // BM
-void genBMBadChar(char * s, int sLen, int * badchar){
+void genBMBadChar(const char * s, const int sLen, int * badChar){
     int i, ascii;
     for(i = 0; i < CHAR_SET_SIZE; i++){
-        badchar[i] = -1;                                        // initialize value with -1
+        badChar[i] = -1;                                        // initialize value with -1
     }
     for(i = 0; i < sLen; i++){
         ascii = (int)s[i];                                      // get the ASCII value
-        badchar[ascii] = i;                                     // cover the initialized value with the position
+        badChar[ascii] = i;                                     // cover the initialized value with the position
     }
 }
 
 
-void genBMGoodFix(char * s, int sLen, int * goodSufFix){
+void genBMGoodFix(const char * s, const int sLen, int * goodFix){
     int i = sLen - 1, j = 0, b_i, b_j;
-    for(b_i = 0; b_i < sLen - 1; b_i++) goodSufFix[b_i] = -1;
+    for(b_i = 0; b_i < sLen - 1; b_i++) goodFix[b_i] = -1;
     while(j < i){
         b_i = i; b_j = j;
         while(b_j >= 0 && s[b_i] == s[b_j]){
-            goodSufFix[b_i--] = b_j--;
+            goodFix[b_i--] = b_j--;
         }
         j++;
     }
 
-    for(int k = 0; k < sLen; k++) printf("%d, ", goodSufFix[k]);
+    for(int k = 0; k < sLen; k++) printf("%d, ", goodFix[k]);
     printf("\n");
+}
+
+int findBM(const char * s, const char * sub){
+    int i, j;
+    int sLen = strlen(s), subLen = strlen(sub);
+    printf("%d, %d", sLen, subLen);
+    int * badChar = (int *)malloc(sizeof(int) * CHAR_SET_SIZE);
+    int * goodFix = (int *)malloc(sizeof(int) * subLen);
+    genBMBadChar(sub, subLen, badChar);
+    genBMGoodFix(sub, subLen, goodFix);
+    for(i = j = subLen - 1; i < sLen;){
+        while(j >= 0 && s[i] == s[j]){
+            i--; j--;
+        };
+        if(j < 0) return i++;
+        else{
+            i += (subLen - 1 - j + subLen - 1 - \
+                (badChar[(int)s[i]] > goodFix[j] ? goodFix[j] : badChar[(int)s[i]]));
+            j = subLen - 1;
+        }
+    }
+
+    return -1;
 }
