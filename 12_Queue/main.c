@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 10/11/2022 07:52:5                                                                *
+* Last Modified: 25/11/2022 09:28:13                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -22,57 +22,23 @@
 #include "queue.h"
 
 int main(){
-    queue * q = (queue *)malloc(sizeof(queue));    
+    queue * q = (queue *)malloc(sizeof(queue));
     initQueue(q, 4);
 
-
+    for(int i = 0; i < 4; i++)
+        enQueue(q, i);
+    for(int i = 0; i < 4; i++)
+        deQueue(q);
+    /*enQueue(q, 3);
+    enQueue(q, 3);
+    enQueue(q, 3);
+    enQueue(q, 3);
+    deQueue(q);*/
+    for(int i = 0; i < 4; i++) enQueue(q, i);
     for(int i = 0; i < 4; i++) enQueue(q, i);
 
     printQueue(q);
 
-    enQueue(q, 4);
-
-    printf("\n");
-
-    printQueue(q);
-
-    printf("\n");
-
-    //deQueue(q);
-
-    for(int i = 0; i < 4; i++) deQueue(q);
-
-    printQueue(q);
-
-    printf("\n%d  %d", q->front, q->rear);
-
-    printf("\n");
-
-    enQueue(q, 10);
-    printf("\n%d  %d\n", q->front, q->rear);
-    enQueue(q, 20);
-    printf("\n%d  %d\n", q->front, q->rear);
-    enQueue(q, 30);
-    printf("\n%d  %d\n", q->front, q->rear);
-    enQueue(q, 40);
-    printQueue(q);
-    printf("\n%d  %d\n", q->front, q->rear);
-    enQueue(q, 50);
-    printQueue(q);
-
-    deQueue(q);
-    printf("\n%d  %d\n", q->front, q->rear);
-    printQueue(q);
-    deQueue(q);
-    printf("\n%d  %d\n", q->front, q->rear);
-    printQueue(q);
-    deQueue(q);
-    printf("\n%d  %d\n", q->front, q->rear);
-    printQueue(q);
-    deQueue(q);
-    printf("\n%d  %d\n", q->front, q->rear);
-    printQueue(q);
-    deQueue(q);
     printf("\n%d  %d\n", q->front, q->rear);
     printQueue(q);
     //for(int i = 0; i < 4; i++){

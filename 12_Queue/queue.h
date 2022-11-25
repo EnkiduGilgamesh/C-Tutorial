@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 23/11/2022 03:02:53                                                               *
+* Last Modified: 25/11/2022 09:26:14                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -36,7 +36,7 @@ void freeQueue(queue * q);
 
 // print
 
-bool printQueue(const queue * q);
+bool printQueue(queue * q);
 
 // functions
 void makeEmptyQueue(queue * q);

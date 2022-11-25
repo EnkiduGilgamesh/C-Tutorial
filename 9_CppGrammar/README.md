@@ -1,6 +1,9 @@
-# 1 Foreword
+# C++ Grammar
 
+- [C++ Grammar](#c-grammar)
 - [1 Foreword](#1-foreword)
+
+# 1 Foreword
 
 C++ is an object-oriented programming (OOP) language, whereas C is a procedure-oriented programming (POP) language, which makes C++ easiler to realize some complex projects. Since C++ is designed to try its best to be compatible with C's grammar meanwhile add new characteristics to work as as an OPP language, C++ is usually recognized as a **superset** of C.
 

@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 23/11/2022 03:12:4                                                                *
+* Last Modified: 25/11/2022 09:26:58                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -25,7 +25,7 @@
 
 // initialize
 void getQueue(queue * q){
-    q->elems = (elemQueue *)malloc(sizeof(elemQueue) * (q->size));
+    q->elems = (elemQueue *)malloc(sizeof(elemQueue) * q->size);
     if(q->elems == NULL) printf("Memory Allocation Error!\n");
 }
 
@@ -51,7 +51,7 @@ bool isEmptyQueue(const queue * q){
     else return FALSE;
 }
 
-bool isFullQueue(const queue * q){
+bool isFullQueue(queue * q){
     if((q->rear + 1) % q->size == q->front) return TRUE;
     else return FALSE;
 }
@@ -85,7 +85,7 @@ bool printQueue(const queue * q){
 
 // functions
 
-bool enQueue(queue * q, const elemQueue elem){
+bool enQueue(queue * q, elemQueue elem){
     if(isFullQueue(q)){
         printf("Overflow!\n");
         return FALSE;
@@ -98,7 +98,7 @@ bool enQueue(queue * q, const elemQueue elem){
 }
 
 bool deQueue(queue * q){
-    if(isEmptyQuue(q)){
+    if(isEmptyQueue(q)){
         printf("Empty Stack!\n");
         return FALSE;
     }
@@ -108,8 +108,8 @@ bool deQueue(queue * q){
     }
 }
 
-elemQueue getFrontQueue(const queue * q){
-    if(isEmptyQuue(q)){
+elemQueue getFrontQueue(queue * q){
+    if(isEmptyQueue(q)){
         printf("Empty Stack!\n");
         exit(1);
     }
