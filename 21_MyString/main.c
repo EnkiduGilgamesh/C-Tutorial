@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 24/11/2022 07:23:59                                                               *
+* Last Modified: 25/11/2022 10:54:25                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -26,10 +26,15 @@
 int main(){
     char s[] = "AABBABABAABABAAB";
     char sub[] = "ABABAABAB";
+    char good[] = "abcdefeghde";
+    int len = strlen(good);
+    int * goodSufFix = (int *)malloc(sizeof(int) * len);
 
-    int pos = findBF(s, strlen(s), sub, strlen(sub));
+    //int pos = findBF(s, strlen(s), sub, strlen(sub));
 
-    printf("%d\n", pos);
+    //printf("%d\n", pos);
+
+    genBMGoodFix(good, len, goodSufFix);
 
     return 0;
 }

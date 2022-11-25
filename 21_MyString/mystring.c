@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 24/11/2022 09:01:14                                                               *
+* Last Modified: 25/11/2022 10:50:55                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -89,24 +89,17 @@ void genBMBadChar(char * s, int sLen, int * badchar){
 }
 
 
-
-void genBMGoodFix(char * s, int sLen, int * sufFix, bool * prefix){
-    int i, j, k;
-    for(i = 0; i < sLen; i++){                                  // initialize the suffix and prefix
-        sufFix[i] = -1;
-        // prefix[i] = FALSE;
-    }
-    for(i = 0; i < sLen - 1; i++){                              // b[0,i]
-        j = i;
-        k = 0;                                                  // 公共后缀子串长度(模式串尾部取k个出来，分别比较)
-        while(j >= 0 && s[j] == s[m-1-k]){                      // 与b[0,m-1]求公共后缀子串
-            j--;
-            k++;
-            suffix[k] = j + 1;
-            // 相同后缀子串长度为k时，该子串在b[0,i]中的起始下标
-            // (如果有多个相同长度的子串，被赋值覆盖，存较大的)
+void genBMGoodFix(char * s, int sLen, int * goodSufFix){
+    int i = sLen - 1, j = 0, b_i, b_j;
+    for(b_i = 0; b_i < sLen - 1; b_i++) goodSufFix[b_i] = -1;
+    while(j < i){
+        b_i = i; b_j = j;
+        while(b_j >= 0 && s[b_i] == s[b_j]){
+            goodSufFix[b_i--] = b_j--;
         }
-        if(j == -1)                                 //查找到模式串的头部了
-            prefix[k] = TRUE;                       //如果公共后缀子串也是模式串的前缀子串
+        j++;
     }
+
+    for(int k = 0; k < sLen; k++) printf("%d, ", goodSufFix[k]);
+    printf("\n");
 }

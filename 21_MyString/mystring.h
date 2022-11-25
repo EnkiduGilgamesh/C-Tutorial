@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 24/11/2022 09:01:33                                                               *
+* Last Modified: 25/11/2022 10:51:14                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -34,7 +34,7 @@ int findKMP(char * s, int sLen, char * sub, int subLen);              // main fu
 
 // BM TODO: 
 void genBMBadChar(char * s, int sLen, int * badchar);
-void genBMGoodFix(char * s, int sLen, int * suffix, bool * prefix);
+void genBMGoodFix(char * s, int sLen, int * goodSufFix);
 
 
 #endif
