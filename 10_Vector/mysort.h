@@ -1,13 +1,13 @@
 /*-*- gcc 10.3.0 -*-*/
 /*-*- coding:utf-8 -*-*/
 /***************************************************************************************************
-* File: \main.c                                                                                    *
-* Project: 21_MyString                                                                             *
-* Created Date: Thursday Nov 24th 2022, 11:58:25 am                                                *
+* File: \mysort.h                                                                                  *
+* Project: 10_Vector                                                                               *
+* Created Date: Thursday Dec 1st 2022, 9:11:10 am                                                  *
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 1/12/2022 09:03:0                                                                 *
+* Last Modified: 1/12/2022 09:15:31                                                                *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -18,29 +18,11 @@
 ***************************************************************************************************/
 
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include "mystring.h"
+#ifndef __MYSORT_H
+#define __MYSORT_H
 
-int main(){
-    char s[] = "ASDHKSAFHGHKVJDBXVASDYUSGCXBVGEWRUYGFBVJHDVJXGAKSFHCKXZBVJCBXJVBJHSGDFHDJSKDFNKJBVJCXBJHGAABBABABAABABAAB";
-    char sub[] = "ABABAABAB";
-    char good[] = "abcdefeghde";
-    char subgood[] = "cde";
-    // int len = strlen(good);
-    // int * goodSufFix = (int *)malloc(sizeof(int) * len);
+#include "vector.h"
 
-    time_t t;
-    time(&t);
-    printf("Time: %s\n", ctime(&t));
-    int pos = findBF(s, sub);
-    printf("%d\n", pos);
-    time(&t);
-    printf("Time: %s\n", ctime(&t));
 
-    // genBMGoodFix(good, len, goodSufFix);
 
-    return 0;
-}
+#endif

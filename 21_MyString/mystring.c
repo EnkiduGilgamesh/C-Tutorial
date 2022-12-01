@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 25/11/2022 04:39:56                                                               *
+* Last Modified: 1/12/2022 09:02:1                                                                 *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -90,36 +90,40 @@ void genBMBadChar(const char * s, const int sLen, int * badChar){
 
 void genBMGoodFix(const char * s, const int sLen, int * goodFix){
     int i = sLen - 1, j = 0, b_i, b_j;
-    for(b_i = 0; b_i < sLen - 1; b_i++) goodFix[b_i] = -1;
+    for(b_i = 0; b_i < sLen; b_i++) goodFix[b_i] = -1;
+    goodFix[sLen - 1] = sLen - 2;
     while(j < i){
         b_i = i; b_j = j;
         while(b_j >= 0 && s[b_i] == s[b_j]){
-            goodFix[b_i--] = b_j--;
+            goodFix[b_i - 1] = j;
+            b_i --; b_j --;
         }
         j++;
     }
 
-    for(int k = 0; k < sLen; k++) printf("%d, ", goodFix[k]);
-    printf("\n");
+    // for(int k = 0; k < sLen; k++) printf("%d, ", goodFix[k]);
+    // printf("\n");
 }
 
 int findBM(const char * s, const char * sub){
     int i, j;
     int sLen = strlen(s), subLen = strlen(sub);
-    printf("%d, %d", sLen, subLen);
     int * badChar = (int *)malloc(sizeof(int) * CHAR_SET_SIZE);
     int * goodFix = (int *)malloc(sizeof(int) * subLen);
     genBMBadChar(sub, subLen, badChar);
     genBMGoodFix(sub, subLen, goodFix);
     for(i = j = subLen - 1; i < sLen;){
-        while(j >= 0 && s[i] == s[j]){
-            i--; j--;
+        int b_i = i, b_j = j; 
+        int flag, badCharMove, goodFixMove;
+        while(b_j >= 0 && s[b_i] == sub[b_j]){
+            b_i--; b_j--;
         };
-        if(j < 0) return i++;
+        if(b_j < 0) return ++b_i;
         else{
-            i += (subLen - 1 - j + subLen - 1 - \
-                (badChar[(int)s[i]] > goodFix[j] ? goodFix[j] : badChar[(int)s[i]]));
-            j = subLen - 1;
+            badCharMove = b_j - badChar[(int)s[b_i]];
+            goodFixMove = j - goodFix[b_j];
+            flag = badCharMove > goodFixMove ? badCharMove : goodFixMove;
+            i += flag;
         }
     }
 
