@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 1/12/2022 09:03:0                                                                 *
+* Last Modified: 1/12/2022 09:21:43                                                                *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -38,6 +38,12 @@ int main(){
     int pos = findBF(s, sub);
     printf("%d\n", pos);
     time(&t);
+    printf("Time: %s\n", ctime(&t));
+    pos = findKMP(s, sub);
+    printf("%d\n", pos);
+    printf("Time: %s\n", ctime(&t));
+    pos = findBM(s, sub);
+    printf("%d\n", pos);
     printf("Time: %s\n", ctime(&t));
 
     // genBMGoodFix(good, len, goodSufFix);

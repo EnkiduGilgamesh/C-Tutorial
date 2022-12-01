@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 25/11/2022 03:28:39                                                               *
+* Last Modified: 1/12/2022 09:18:26                                                                *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -32,10 +32,9 @@ int findBF(const char * s, const char * sub);
 void genKMPNext(const char * s, const int sLen, int * next);          // generate next array in KMP algorithm
 int findKMP(const char * s, const char * sub); 
 
-// BM TODO: 
+// BM
 void genBMBadChar(const char * s, const int sLen, int * badchar);
 void genBMGoodFix(const char * s, const int sLen, int * goodSufFix);
 int findBM(const char * s, const char * sub);
-
 
 #endif
