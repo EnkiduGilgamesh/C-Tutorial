@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 1/12/2022 09:45:13                                                                *
+* Last Modified: 8/12/2022 09:31:26                                                                *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -24,10 +24,16 @@
 typedef int sortType;
 typedef enum{FALSE, TRUE} bool;
 
+// All the algorithm will sort the target from the smallest to biggest
+
+// test
+
+bool testSortRes(sortType * A, const int sortLen);
+
 // Insert Sort
 void directInsertSort(sortType * A, const int sortLen);
 void binaryInsertSort(sortType * A, const int sortLen);
-void shellInsertSort(sortType * A, const int sortLen);
+void shellInsertSort(sortType * A, const int sortLen, const int initIncre);
 
 // Select Sort
 void directSelectSort(sortType * A, const int sortLen);
