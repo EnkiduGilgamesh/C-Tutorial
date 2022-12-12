@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 8/12/2022 09:51:25                                                                *
+* Last Modified: 12/12/2022 10:00:46                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -80,7 +80,19 @@ void shellInsertSort(sortType * A, const int sortLen, const int initIncre){
 
 // Select Sort
 void directSelectSort(sortType * A, const int sortLen){
-    return;
+    int i, j, k;
+    sortType temp;
+    for(i = 0; i < sortLen - 1; i++){
+        k = i;
+        for(j = i + 1; j < sortLen; j++){
+            if(A[j] < A[k]) k = j;
+        }
+        if(i != k){
+            temp = A[k];
+            A[k] = A[i];
+            A[i] = temp;
+        }
+    }
 }
 
 void treeSelectSort(sortType * A, const int sortLen){
@@ -89,7 +101,24 @@ void treeSelectSort(sortType * A, const int sortLen){
 
 // Exchange Sort
 void bubbleSort(sortType * A, const int sortLen){
-    return;
+    int i, j;
+    bool flag;
+    sortType temp;
+
+    for(i = sortLen - 1, flag = 1; i > 0 && flag; i--){
+        /* If the last time there is no bubble, the flag's value is FALSE, 
+           which means the target has been sorted */
+        flag = FALSE;
+        for(j = 0; j < i; j++){
+            /* move the maximum element to the right end */
+            if(A[j + 1] < A[j]){
+                flag = TRUE;
+                temp = A[j + 1];
+                A[j + 1] = A[j];
+                A[j] = temp;
+            }
+        }
+    }
 }
 
 void quickSort(sortType * A, const int sortLen){
@@ -102,6 +131,34 @@ void radixSort(sortType * A, const int sortLen){
 }
 
 //Merge Sort
+void mergeSortRecursive(sortType * l, sortType * reg, const int start, const int end){
+    if(start >= end) return;
+
+    int len = end - start;
+    int mid = (len >> 1) + start;
+    int start1 = start, end1 = mid;
+    int start2 = mid + 1, end2 = end;
+
+    mergeSortRecursive(l, reg, start1, end1);
+    mergeSortRecursive(l, reg, start2, end2);
+
+    int k = start;
+    while(start1 <= end1 && start2 <= end2){
+        reg[k++] = l[start1] < l[start2] ? l[start1++] : l[start2++];
+    }
+    while(start1 <= end1){
+        reg[k++] = l[start1++];
+    }
+    while(start2 <= end2){
+        reg[k++] = l[start2++];
+    }
+
+    for(int i = start; i <= end; i++){
+        l[i] = reg[i];
+    }
+}
+
 void mergeSort(sortType * A, const int sortLen){
-    return;
+    sortType * reg = (sortType *)malloc(sizeof(sortType) * sortLen);
+    mergeSortRecursive(A, reg, 0, sortLen - 1);
 }

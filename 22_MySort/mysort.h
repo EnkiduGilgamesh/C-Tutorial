@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 8/12/2022 09:31:26                                                                *
+* Last Modified: 12/12/2022 09:59:59                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -37,16 +37,17 @@ void shellInsertSort(sortType * A, const int sortLen, const int initIncre);
 
 // Select Sort
 void directSelectSort(sortType * A, const int sortLen);
-void treeSelectSort(sortType * A, const int sortLen);
+void treeSelectSort(sortType * A, const int sortLen);           // TODO: 
 
 // Exchange Sort
 void bubbleSort(sortType * A, const int sortLen);
-void quickSort(sortType * A, const int sortLen);
+void quickSort(sortType * A, const int sortLen);                // TODO: use stack to optimize the recursive
 
 // Distribution Sort
-void radixSort(sortType * A, const int sortLen);
-
+void radixSort(sortType * A, const int sortLen);                // TODO: 
+                                 
 //Merge Sort
+void mergeSortRecursive(sortType * l, sortType * reg, const int start, const int end);
 void mergeSort(sortType * A, const int sortLen);
 
 #endif

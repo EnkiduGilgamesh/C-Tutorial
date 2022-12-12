@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 8/12/2022 10:01:21                                                                *
+* Last Modified: 12/12/2022 10:01:37                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -28,47 +28,77 @@ int main(){
     sortType * s = (sortType *)malloc(sizeof(sortType) * MAX_SIZE);
     clock_t begin, end;
     double duration;
-    for(int i = 0; i < MAX_SIZE; i++){
-        s[i] = (int)(rand());
-    }
-    
-    begin = clock();
-    directInsertSort(s, MAX_SIZE);
-    if(testSortRes(s, MAX_SIZE)) printf("Sort successfully!\n");
-    else printf("Failed to sort!\n");
-    end = clock();
-    duration = (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("Direct insert Sort consumes time: %lfs\n", duration);
-    
-    for(int i = 0; i < MAX_SIZE; i++){
-        s[i] = (int)(rand());
-    }
-    
-    begin = clock();
-    binaryInsertSort(s, MAX_SIZE);
-    // for(int j = 0; j < MAX_SIZE; j++){
-    //     printf("%d ", s[j]);
+    // for(int i = 0; i < MAX_SIZE; i++){
+    //     s[i] = (int)(rand());
     // }
-    if(testSortRes(s, MAX_SIZE)) printf("Sort successfully!\n");
-    else printf("Failed to sort!\n");
-    end = clock();
-    duration = (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("Binary insert Sort consumes time: %lfs\n", duration);
+    
+    // begin = clock();
+    // directInsertSort(s, MAX_SIZE);
+    // if(testSortRes(s, MAX_SIZE)) printf("Sort successfully!\n");
+    // else printf("Failed to sort!\n");
+    // end = clock();
+    // duration = (double)(end - begin) / CLOCKS_PER_SEC;
+    // printf("Direct insert Sort consumes time: %lfs\n", duration);
+    
+    // for(int i = 0; i < MAX_SIZE; i++){
+    //     s[i] = (int)(rand());
+    // }
+    
+    // begin = clock();
+    // binaryInsertSort(s, MAX_SIZE);
+    // if(testSortRes(s, MAX_SIZE)) printf("Sort successfully!\n");
+    // else printf("Failed to sort!\n");
+    // end = clock();
+    // duration = (double)(end - begin) / CLOCKS_PER_SEC;
+    // printf("Binary insert Sort consumes time: %lfs\n", duration);
+
+    // for(int i = 0; i < MAX_SIZE; i++){
+    //     s[i] = (int)(rand());
+    // }
+    
+    // begin = clock();
+    // shellInsertSort(s, MAX_SIZE, 10000);
+    // if(testSortRes(s, MAX_SIZE)) printf("Sort successfully!\n");
+    // else printf("Failed to sort!\n");
+    // end = clock();
+    // duration = (double)(end - begin) / CLOCKS_PER_SEC;
+    // printf("Shell Sort consumes time: %lfs\n", duration);
+
+    // for(int i = 0; i < MAX_SIZE; i++){
+    //     s[i] = (int)(rand());
+    // }
+    
+    // begin = clock();
+    // directSelectSort(s, MAX_SIZE);
+    // if(testSortRes(s, MAX_SIZE)) printf("Sort successfully!\n");
+    // else printf("Failed to sort!\n");
+    // end = clock();
+    // duration = (double)(end - begin) / CLOCKS_PER_SEC;
+    // printf("Direct Select Sort consumes time: %lfs\n", duration);
 
     for(int i = 0; i < MAX_SIZE; i++){
         s[i] = (int)(rand());
     }
-    
+
     begin = clock();
-    shellInsertSort(s, MAX_SIZE, 10000);
-    // for(int j = 0; j < MAX_SIZE; j++){
-    //     printf("%d ", s[j]);
-    // }
+    bubbleSort(s, MAX_SIZE);
     if(testSortRes(s, MAX_SIZE)) printf("Sort successfully!\n");
     else printf("Failed to sort!\n");
     end = clock();
     duration = (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("Shell Sort consumes time: %lfs\n", duration);
+    printf("Bubble Sort consumes time: %lfs\n", duration);
+
+    for(int i = 0; i < MAX_SIZE; i++){
+        s[i] = (int)(rand());
+    }
+
+    begin = clock();
+    mergeSort(s, MAX_SIZE);
+    if(testSortRes(s, MAX_SIZE)) printf("Sort successfully!\n");
+    else printf("Failed to sort!\n");
+    end = clock();
+    duration = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Merge Sort consumes time: %lfs\n", duration);
 
     return 0;
 }
