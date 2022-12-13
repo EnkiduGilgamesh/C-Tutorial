@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 12/12/2022 10:00:46                                                               *
+* Last Modified: 13/12/2022 10:07:23                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -161,4 +161,22 @@ void mergeSortRecursive(sortType * l, sortType * reg, const int start, const int
 void mergeSort(sortType * A, const int sortLen){
     sortType * reg = (sortType *)malloc(sizeof(sortType) * sortLen);
     mergeSortRecursive(A, reg, 0, sortLen - 1);
+}
+
+// Get some statistical data
+double getAverage(sortType * A, const int len){
+    int i;
+    double sum = 0;
+    for(i = 0; i < len; i++){
+        sum += A[i];
+    }
+
+    return sum / len;
+}
+
+double getMedian(sortType * A, const int len){
+    if(!testSortRes(A, len)) directInsertSort(A, len);
+
+    if(len % 2) return (double)A[(len / 2)];
+    else return ((double)A[len / 2] + (double)A[len / 2 - 1]) / 2;
 }

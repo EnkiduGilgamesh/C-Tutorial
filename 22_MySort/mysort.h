@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 12/12/2022 09:59:59                                                               *
+* Last Modified: 13/12/2022 10:08:31                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -25,6 +25,7 @@ typedef int sortType;
 typedef enum{FALSE, TRUE} bool;
 
 // All the algorithm will sort the target from the smallest to biggest
+// TODO: write a function sort the array in a most efficient way
 
 // test
 
@@ -49,5 +50,10 @@ void radixSort(sortType * A, const int sortLen);                // TODO:
 //Merge Sort
 void mergeSortRecursive(sortType * l, sortType * reg, const int start, const int end);
 void mergeSort(sortType * A, const int sortLen);
+
+// Get some statistical data
+double getAverage(sortType * A, const int len);
+double getMedian(sortType * A, const int len);
+sortType getMode(sortType * A, const int len);
 
 #endif
