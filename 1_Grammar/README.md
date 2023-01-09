@@ -1792,3 +1792,53 @@ We will get the result
 ```bash
 Value of sum : 116.000000
 ```
+
+# 20 Head file
+
+Sometimes, writing function declaration and other definitions in header files is a good habit, so that we can clearly know what functions and variable we can use meanwhile make the main file more legible. Also, we can reuse them in other program just by including the same header files. In the former instance, we have used the standard header file `stdio.h` many times. Just create a new file with `.h` as its suffix, and write your declarations and definitions in it, then you can simply include it in your main program
+
+```c
+#include "myheader.h"
+```
+
+Notice that your own header files are quoted by `"`, and only standard header files are quoted by `<` and `>`.
+
+Customarily, we will write a `.c` file with the same name with the `.h` file to define all the functions declared in it.
+
+Actually, what the including does is like to copy the content in head file and paste it in the destination. To void the repeatedly quotations from one head file, we can do in head files like this
+
+```c
+#ifndef HEADER_FILE
+#define HEADER_FILE
+
+/* statements */
+
+#endif
+```
+
+Another situation is that we need different head file in different conditions. We can do in main program like this
+
+```c
+#if SYSTEM_1
+   # include "system_1.h"
+#elif SYSTEM_2
+   # include "system_2.h"
+#elif SYSTEM_3
+   ...
+#endif
+```
+
+If there are too many head files to include, we can include all of them in another head file, and then include the special head file in main file.
+
+```c
+/* global.h */
+#include "head1.h"
+#include "head2.h"
+#include "head3.h"
+#include <stdio.h>
+```
+
+```c
+/* main.c */
+#include "global.h"
+```
