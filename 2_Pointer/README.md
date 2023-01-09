@@ -241,35 +241,7 @@ int main ()
 }
 ```
 
-# 7 malloc
-
-The function `malloc` is from standard library `stdlib.h`. We don't always know a array's size when we initialize it. The `malloc` and `realloc` function can help us dynamically provide space for arrays. And `free` function can help us free up an array's space.
-
-```c
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
- 
-int main(){
-   char *str;
- 
-   /* allot space */
-   str = (char *) malloc(15);
-   strcpy(str, "runoob");
-   printf("String = %s,  Address = %u\n", str, str);
- 
-   /* reallot space */
-   str = (char *) realloc(str, 25);
-   strcat(str, ".com");
-   printf("String = %s,  Address = %u\n", str, str);
- 
-   free(str);
- 
-   return(0);
-}
-```
-
-# 8 Function Pointer
+# 7 Function Pointer
 
 A pointer also can points a function, for instance
 
@@ -297,7 +269,7 @@ int main(void){
 }
 ```
 
-# 9 Callback Function
+# 8 Callback Function
 
 If a function has at least one function pointer as its parameter, the function can be called callback function. For instance
 
@@ -324,5 +296,63 @@ int main(void){
     }
     printf("\n");
     return 0;
+}
+```
+
+# 9 Multilevel pointer
+
+A pointer which points a pointer can be called multilevel pointer. For instance
+
+```c
+int **var;
+```
+
+Actually, a two-dimensional array's name is a multilevel pointer.The array's name is a pointer pointing the first array. For instance
+
+```c
+int a[2][3] = {{1, 2, 3}, {4, 5, 6}};
+int (*p)[3] = a;
+printf("The result is %d", *(*(p+1)+1));
+```
+
+In the above example, the `p` is a pointer which points a pointer pointing an array sized 3 integers which is actually `a[0]`.
+
+Notice that if you declare it with `int *p[3]`, it's means that it is an array that can keep 3 int-type pointers.
+
+# 10 malloc
+
+The function `malloc` is from standard library `stdlib.h`. We don't always know a array's size when we initialize it. The `malloc` and `realloc` function can help us dynamically provide space for arrays. And `free` function can help us free up an array's space.
+
+```c
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+ 
+int main(){
+   char *str;
+ 
+   /* allot space */
+   str = (char *) malloc(15);
+   strcpy(str, "runoob");
+   printf("String = %s,  Address = %u\n", str, str);
+ 
+   /* reallot space */
+   str = (char *) realloc(str, 25);
+   strcat(str, ".com");
+   printf("String = %s,  Address = %u\n", str, str);
+ 
+   free(str);
+ 
+   return(0);
+}
+```
+
+If we need to initialize a multi-dimensions array, we can do like this
+
+```c
+char **obj;
+obj = (char **)malloc(sizeof(char *) * numRows);
+for(int i = 0;i < numRows; i++){
+   obj[i] = (char *)malloc(sizeof(char) * numColumns);
 }
 ```

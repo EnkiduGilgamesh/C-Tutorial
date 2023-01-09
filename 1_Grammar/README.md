@@ -1212,7 +1212,7 @@ double balance[5] = {1000.0, 2.0, 3.4, 7.0, 50.0};
 double balance2[] = {1000.0, 2.0, 3.4, 7.0, 50.0};
 ```
 
-In this way, the array size is not essential. If the size is ignored, the compiler will default set its size as you give size.
+In this way, the array size is not essential. If the size is ignored, the compiler will default set its size as you give size. And if the numbers you give to the array is less than the array's size, the remaining elements will be defaultly set by `0`. And all the elements are kept continuously in computer's memory.
 
 ## 9.3 Visit
 
@@ -1231,6 +1231,24 @@ for(int i = 0; i < 9; i++){
    p[i] = 1 / i;
 }
 ```
+
+## 9.4 Two-dimensional array
+
+The array I have introduced has only one dimension. Actually, we can initialize an array with two dimensions.
+
+```c
+type arrayName[ rowSize ][ columnSize ];
+```
+
+The array can storage $rowSize * columnSize$ numbers with the appointed type. We can initialize a two-dimensional array and visit the element in it like this
+
+```c
+int p[2][3] = {{1, 2, 3}, {4, 5, 6}};
+int num = p[1][2];
+printf("The result is %d", num);
+```
+
+By that analogy, we can create an array with more dimensions. Notice that no matter how many the demension is, all the elements in an array are kept continuously in computer's memory.
 
 # 10 String
 
@@ -1391,7 +1409,7 @@ In `printf` and `scanf`, placeholders are often used. There are many types of pl
 | `%Lf` | long double type floating number |
 | `%p` | put out a hexadecimal number with **8 digits if the system is 32 bit, whereas 16 digits if the system is 64 bit** |
 
-We can expand the placeholder as `%num1.num2..`. The `num1` means that the out will hold how many digits place whereas the `num2` means how many digits are visitable. For example
+We can expand the placeholder as `%num1.num2..`. The `num1` means that the out will hold how many digits place whereas the `num2` means how many digits are visitable. Notice that only when the `num1` is bigger than the number's actual width, it will work and the number will add space on the left. For example
 
 ```c
 printf("%5.4d\n", 22);
@@ -1400,24 +1418,24 @@ printf("%5d\n", 22);
 printf("%.3d\n", 22);
 ```
 
-If we add a `-` in front of the `num1`, the printed number will align at the left instead of the default right. For example
+If we add a `-` in front of the `num1`, the printed number will align at the right instead of the default right. For example
 
 ```c
 printf("%-5.4d\n", 22);
 printf("%-5.3d\n", 22);
 ```
 
+The code will get this result
+
+```terminal
+0022 
+022  
+```
+
 For `float` type, the `num2` means the precision. For example
 
 ```c
 printf("%7.2f", 1234.5678);
-```
-
-The code will get this result
-
-```terminal
- 0022
-  022
 ```
 
 ## 12.4 Character Constant
