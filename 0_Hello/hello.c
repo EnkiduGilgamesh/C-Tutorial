@@ -22,7 +22,7 @@
 
 int main(){
     /* My First C Program*/
-    char hello[] = "Hello world! 你好";
+    char hello[] = "Hello world! 你好世界";
     printf(hello);
     return 0;
 }
