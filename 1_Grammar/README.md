@@ -1374,6 +1374,8 @@ int main( ) {
 }
 ```
 
+Notice that `scanf` will terminate when it meets `space`, `tab`, and wrapping around.
+
 ## 12.3 Placeholder
 
 In `printf` and `scanf`, placeholders are often used. There are many types of placeholders.
@@ -1455,6 +1457,54 @@ In C language, there are some strings being reserved for special usage. Most of 
 | `\r` | carriage return |
 | `\t` | horizontal tab |
 | `\v` | vertical tab |
+
+## 12.5 Other input
+
+### 12.5.1 getchar
+
+```c
+char c = getchar();
+```
+
+This function can get the next character of the characters having been read in the buffer. For instance
+
+```c
+#include "stdio.h"
+
+int main()
+{
+	char ch;
+	printf("Input two characters: "); 
+	scanf("%c", &ch); 
+	printf("%c", getchar()); 
+
+   return 0;
+}
+```
+
+If you input `12`, you will get `2` as the result.
+
+### 12.5.2 gets
+
+Function `gets` will only terminate when it meets wrapping around. For instance
+
+```c
+# include <stdio.h>
+
+int main(void)
+{
+    char str[20];
+    printf("Input a string: ");
+    gets(str);
+    printf("%s\n", str);
+
+    return 0;
+}
+```
+
+If you input `I love you`, you will get `I love you` as the result. The `space` can be recognized in `gets` function.
+
+Notice that `gets` function will keep reading until it meets wrapping around, so if the input is longer than the string's space, the function could be unsafe. C has provided `gets_s(char*, int*)` as a replacing method, but unfortunately, gcc and clang havn't supported it yet.
 
 # 13 Preprocessor
 

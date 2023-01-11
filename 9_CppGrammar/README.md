@@ -190,4 +190,4 @@ A *obj = new A();
 delete obj;
 ```
 
-When we use `new` to create a class, the constructor of the class will be called after the space is distributed, whereas when we use `free`to free a class, the destructor of the class will be called before the space is freed.
+When we use `new` to create a class, the constructor of the class will be called **after** the space is distributed, whereas when we use `free`to free a class, the destructor of the class will be called **before** the space is freed.
