@@ -23,7 +23,7 @@ int main(){
 }
 ```
 
-The head file which is different from C language, countains the standard input and output stream. In C++, when using standard, we should remove the ".h" suffix.
+The head file which is different from C language, countains the standard input and output stream. In C++, when using standard, we should remove the ".h" suffix. We can still use the library in C, just removing the ".h" suffix and add "c" at the beginning of the file name.
 
 TODO: The namespace means
 
