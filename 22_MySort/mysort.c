@@ -7,7 +7,7 @@
 * Author: Wenren Muyan                                                                             *
 * Comments:                                                                                        *
 * --------------------------------------------------------------------------------                 *
-* Last Modified: 13/12/2022 10:07:23                                                               *
+* Last Modified: 26/01/2023 09:11:22                                                               *
 * Modified By: Wenren Muyan                                                                        *
 * --------------------------------------------------------------------------------                 *
 * Copyright (c) 2022 - future Wenren Muyan                                                         *
@@ -42,15 +42,15 @@ void directInsertSort(sortType * A, const int sortLen){
 }
 
 void binaryInsertSort(sortType * A, const int sortLen){
-    int i, L, R, flag;
+    int i, L, R, mid;
     sortType temp;
     for(i = 0; i < sortLen; i++){
         temp = A[i];
         L = 0, R = i - 1;
         while(L <= R){
-            flag = (L + R) / 2;
-            if(temp < A[flag]) R = flag - 1;
-            else L = flag + 1;
+            mid = (L + R) / 2;
+            if(temp < A[mid]) R = mid - 1;
+            else L = mid + 1;
         }
         /* now the L is equal to R */
         for(R = i; R > L; R--) A[R] = A[R - 1];
