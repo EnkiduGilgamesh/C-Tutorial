@@ -612,7 +612,7 @@ int main ()
 
 ## 4.2 ?: Operator
 
-We have known the ternary operators `?:`. It is actually is a conditional statement. It is used like this
+We have known the ternary operators `?:`. It performs a conditional statement. It is used like this
 
 ```c
 Exp1 ? Exp2 : Exp3;
