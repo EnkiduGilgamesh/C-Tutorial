@@ -1,11 +1,31 @@
+/*-*- gcc 10.3.0 -*-*/
+/*-*- coding:utf-8 -*-*/
+/***************************************************************************************************
+* File: \tree.c                                                                                    *
+* Project: 14_Tree                                                                                 *
+* Created Date: Thursday Mar 2nd 2023, 9:00:53 pm                                                  *
+* Author: Wenren Muyan                                                                             *
+* Comments:                                                                                        *
+* --------------------------------------------------------------------------------                 *
+* Last Modified: 2/03/2023 09:24:13                                                                *
+* Modified By: Wenren Muyan                                                                        *
+* --------------------------------------------------------------------------------                 *
+* Copyright (c) 2023 - future Wenren Muyan                                                         *
+* --------------------------------------------------------------------------------                 *
+* HISTORY:                                                                                         *
+* Date				By				Comments                                                       *
+* --------------------------------------------------------------------------------                 *
+***************************************************************************************************/
+
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "tree.h"
 
-void initBTreeNode(bTreeNode * btree, elem data, bTreeNode * l, bTreeNode * r){
-    btree->lChild = l;
-    btree->rChild = r;
-    btree->data = data;
+void initBTreeNode(bTreeNode * n, elem d, bTreeNode * l, bTreeNode * r){
+    n->lChild = l;
+    n->rChild = r;
+    n->data = d;
 }
 
 bTreeNode * createBTreeNode(elem data, bTreeNode * l, bTreeNode * r){
@@ -13,7 +33,7 @@ bTreeNode * createBTreeNode(elem data, bTreeNode * l, bTreeNode * r){
     if(!p)
         printf("Memory allocation failed!\n");
     else
-        initBTree(p, data, l, r);
+        initBTreeNode(p, data, l, r);
 
     return p;
 }
@@ -32,7 +52,8 @@ bool isEmptyBTree(bTree * bt){
 }
 
 bTreeNode * makeTree(bTree * bt, elem data, bTreeNode * l, bTreeNode * r){
-    bTreeNode * p = createBTreeNode(data, l, r);
+    bTreeNode * p;
+    p = createBTreeNode(data, l, r);
     bt->root = p;
 
     return bt->root;
