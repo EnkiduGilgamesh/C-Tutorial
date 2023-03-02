@@ -1,6 +1,8 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include "tree.h"
 
-void initBTree(bTreeNode * btree, elem data, bTreeNode * l, bTreeNode * r){
+void initBTreeNode(bTreeNode * btree, elem data, bTreeNode * l, bTreeNode * r){
     btree->lChild = l;
     btree->rChild = r;
     btree->data = data;
@@ -18,7 +20,7 @@ bTreeNode * createBTreeNode(elem data, bTreeNode * l, bTreeNode * r){
 
 bTree * initBTree(){
     bTree * bt = (bTree *)malloc(sizeof(bTree));
-    if(!t)
+    if(!bt)
         printf("Memory allocation failed!\n");
     else
         bt->root = NULL;
@@ -29,8 +31,8 @@ bool isEmptyBTree(bTree * bt){
     return bt->root != NULL;
 }
 
-bTreeNode * makeTree(bTree bt, elem data, bTreeNode * l, bTreeNode * r){
-    bTreeNode * p = createBTreeNode(elem data, bTreeNode * l, bTreeNode * r);
+bTreeNode * makeTree(bTree * bt, elem data, bTreeNode * l, bTreeNode * r){
+    bTreeNode * p = createBTreeNode(data, l, r);
     bt->root = p;
 
     return bt->root;

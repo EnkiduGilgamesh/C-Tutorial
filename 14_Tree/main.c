@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "tree.h"
 
-typedef char elem;
+// typedef char elem;
 
 int main(){
     bTree * t = initBTree();
