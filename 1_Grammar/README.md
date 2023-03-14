@@ -1649,13 +1649,19 @@ Structure is a data type that contains a group of data which are difined by user
 We can define a structure to store a book's property
 
 ```c
-struct Books
+struct Book
 {
    char  title[50];
    char  author[50];
    char  subject[100];
    int   book_id;
-} book;
+} book1;
+```
+
+We can declare a structure like this
+
+```c
+struct Book book1, books2[20], * books3;
 ```
 
 In *1.15* we have introduced the way through `typedef` to define a structure.
@@ -1663,7 +1669,7 @@ In *1.15* we have introduced the way through `typedef` to define a structure.
 Then we can use the tag to declare a data type named `Books`
 
 ```c
-Books book1, books2[20], *books3;
+book book1, books2[20], *books3;
 ```
 
 ## 16.2 Initialization
@@ -1692,6 +1698,13 @@ int main(){
 
    /* statement */
 }
+```
+
+Another way to access a structure member is to use the pointer which points the structure. For instance
+
+```c
+book * b;
+b->book_id = 6495408;
 ```
 
 # 17 Union
